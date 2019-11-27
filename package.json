@@ -4,16 +4,25 @@
   "license": "None provided",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "concurrently": "^3.6.0",
-    "cors": "^2.8.4",
+    "cors": "^2.8.5",
     "express": "^4.16.3",
+    "mongodb": "^3.3.5",
+    "mongoose": "^5.7.12",
+    "node-sass": "^4.13.0",
     "nodemon": "^1.17.5",
     "react": "^16.4.1",
+    "react-awesome-modal": "^2.0.5",
     "react-dom": "^16.4.1",
-    "react-scripts": "1.1.4"
+    "react-scripts": "1.1.4",
+    "react-table": "^6.10.3",
+    "sweetalert": "^2.1.2",
+    "sweetalert-react": "^0.4.11",
+    "sweetalert2": "^9.4.0"
   },
   "scripts": {
-    "start": "concurrently --kill-others \"node server\" \"npm run start:react-app\"",
+    "start": "concurrently --kill-others \"nodemon server\" \"npm run start:react-app\"",
     "start:react-app": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
