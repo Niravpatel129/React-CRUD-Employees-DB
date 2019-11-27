@@ -2,7 +2,6 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 module.exports = function mongooseSetup() {
-  console.log(process.env.API_KEY); // root
   mongoose.connect(process.env.API_KEY, {
     useNewUrlParser: true,
     useUnifiedTopology: true
