@@ -43,11 +43,6 @@ function updateEmplyees() {
 updateEmplyees();
 
 app.use(cors());
-app.use(function(req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
-  next();
-});
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
