@@ -156,6 +156,8 @@ class Employees extends Component {
             <UpdateEmployeeModal
               toggleUpdateModal={this.toggleUpdateModal}
               data={this.state.valueToUpdate}
+              globalAlerts={this.props.globalAlerts}
+              getEmployees={this.getEmployees}
             />
           )}
         </div>

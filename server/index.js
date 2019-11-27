@@ -84,4 +84,33 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
   });
 });
 
+app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let employeeInfo = req.body;
+
+  EmployeesDataBase.findByIdAndUpdate(
+    { _id: employeeInfo._id },
+    {
+      $set: {
+        _id: employeeInfo._id,
+        id: employeeInfo.id,
+        name: employeeInfo.name,
+        code: employeeInfo.code,
+        profession: employeeInfo.profession,
+        city: employeeInfo.city,
+        branch: employeeInfo.branch,
+        color: employeeInfo.color
+      }
+    }
+  )
+    .then(data => {
+      updateEmplyees();
+
+      res.send(200);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 app.listen(8080, () => console.log("Job Dispatch API running on port 8080!"));

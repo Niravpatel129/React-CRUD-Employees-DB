@@ -2,61 +2,12 @@ import React, { Component } from "react";
 import Modal from "react-awesome-modal";
 
 import "./UpdateEmployeeModal.css";
+import axios from "axios";
 
 class UpdateEmployeeModal extends Component {
   constructor(props) {
     super(props);
-    this.state = { visible: false };
-  }
 
-  componentDidMount() {
-    this.setState({ visible: this.props.visible });
-  }
-
-  closeModal() {
-    this.props.toggleUpdateModal();
-  }
-
-  handleIdChange = event => {
-    this.id = event.target.value;
-  };
-
-  handleNameChange = event => {
-    this.name = event.target.value;
-  };
-
-  handleCodeChange = event => {
-    this.code = event.target.value;
-  };
-
-  handleProfessionChange = event => {
-    this.profession = event.target.value;
-  };
-
-  handleCityChange = event => {
-    this.city = event.target.value;
-  };
-
-  handleBranchChange = event => {
-    this.branch = event.target.value;
-  };
-
-  handleColorChange = event => {
-    this.color = event.target.value;
-  };
-
-  handleColorChange = event => {
-    this.color = event.target.value;
-  };
-
-  handleSubmit = event => {
-    event.preventDefault();
-    console.log(event);
-    this.closeModal();
-  };
-
-  render() {
-    console.log(this.props);
     const {
       _id,
       id,
@@ -67,7 +18,89 @@ class UpdateEmployeeModal extends Component {
       branch,
       color
     } = this.props.data;
-    console.log(_id, id, name, code, profession, city, branch, color);
+
+    this.state = {
+      visible: false,
+      _id: _id,
+      id: id,
+      name: name,
+      code: code,
+      profession: profession,
+      city: city,
+      branch: branch,
+      color: color
+    };
+  }
+
+  componentDidMount() {
+    this.setState({ visible: this.props.visible });
+    this.id = this.props.data.id;
+  }
+
+  closeModal() {
+    this.props.toggleUpdateModal();
+  }
+
+  handleIdChange = event => {
+    this.setState({ id: event.target.value });
+    this.id = event.target.value;
+  };
+
+  handleNameChange = event => {
+    this.setState({ name: event.target.value });
+    this.name = event.target.value;
+  };
+
+  handleCodeChange = event => {
+    this.setState({ code: event.target.value });
+    this.code = event.target.value;
+  };
+
+  handleProfessionChange = event => {
+    this.setState({ profession: event.target.value });
+    this.profession = event.target.value;
+  };
+
+  handleCityChange = event => {
+    this.setState({ city: event.target.value });
+    this.city = event.target.value;
+  };
+
+  handleBranchChange = event => {
+    this.setState({ branch: event.target.value });
+    this.branch = event.target.value;
+  };
+
+  handleColorChange = event => {
+    this.setState({ color: event.target.value });
+    this.color = event.target.value;
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .put("http://localhost:8080/api/updateEmployee", {
+        _id: this.state._id, // hidden primary key
+        id: this.state.id,
+        name: this.state.name,
+        code: this.state.code,
+        profession: this.state.profession,
+        city: this.state.city,
+        branch: this.state.branch,
+        color: this.state.color,
+        assigned: true
+      })
+      .then(() => {
+        setTimeout(() => {
+          this.props.globalAlerts("Updated!");
+          this.props.getEmployees();
+        }, 30);
+      });
+
+    this.closeModal();
+  };
+
+  render() {
     return (
       <section>
         <Modal
@@ -82,56 +115,49 @@ class UpdateEmployeeModal extends Component {
                   type="number"
                   name="id"
                   onChange={this.handleIdChange}
-                  placeholder="id"
-                  value={id}
+                  value={this.state.id}
                   required
                 />
                 <input
                   type="text"
                   name="name"
                   onChange={this.handleNameChange}
-                  placeholder="name"
-                  value={name}
+                  value={this.state.name}
                   required
                 />
                 <input
                   type="text"
                   name="code"
                   onChange={this.handleCodeChange}
-                  placeholder="code"
-                  value={code}
+                  value={this.state.code}
                   required
                 />
                 <input
                   type="text"
                   name="profession"
                   onChange={this.handleProfessionChange}
-                  placeholder="profession"
-                  value={profession}
+                  value={this.state.profession}
                   required
                 />
                 <input
                   type="text"
                   name="city"
                   onChange={this.handleCityChange}
-                  placeholder="city"
-                  value={city}
+                  value={this.state.city}
                   required
                 />
                 <input
                   type="text"
                   name="branch"
                   onChange={this.handleBranchChange}
-                  placeholder="branch"
-                  value={branch}
+                  value={this.state.branch}
                   required
                 />
                 <input
                   type="text"
                   name="color"
                   onChange={this.handleColorChange}
-                  placeholder="color"
-                  value={color}
+                  value={this.state.color}
                   required
                 />
               </fieldset>
