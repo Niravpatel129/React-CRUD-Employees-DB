@@ -4,6 +4,7 @@ const app = express();
 
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
+mongoose.set("useFindAndModify", false);
 
 const mongooseSetup = require("./mongooseSetup/mongooseSetup.js");
 const employeeSchemaTemplate = require("./Schemas/employees");
@@ -56,7 +57,7 @@ app.delete("/api/deleteEmployee", cors(corsOptions), (req, res, next) => {
     }
   ).then(() => {
     updateEmplyees();
-    res.send(200);
+    res.sendStatus(200);
   });
 });
 
@@ -79,7 +80,7 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
     if (err) return console.error(err);
 
     updateEmplyees();
-    res.send(200);
+    res.sendStatus(200);
     console.log(employee.name + " added to the database.");
   });
 });
@@ -106,7 +107,7 @@ app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
     .then(data => {
       updateEmplyees();
 
-      res.send(200);
+      res.sendStatus(200);
     })
     .catch(err => {
       console.log(err);

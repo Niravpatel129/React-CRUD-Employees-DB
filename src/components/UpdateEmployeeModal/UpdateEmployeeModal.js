@@ -94,7 +94,7 @@ class UpdateEmployeeModal extends Component {
         setTimeout(() => {
           this.props.globalAlerts("Updated!");
           this.props.getEmployees();
-        }, 30);
+        }, 70);
       });
 
     this.closeModal();
