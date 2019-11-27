@@ -1,4 +1,6 @@
 # Plexxis Interview Exercise
+![App Demo](demo/demo.gif)
+
 
 ## Requirements
 
