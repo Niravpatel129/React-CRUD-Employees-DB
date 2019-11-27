@@ -15,6 +15,7 @@ class AddEmployeeButton extends Component {
 
   closeModal = () => {
     this.setState({ visible: false });
+    this.props.playSouds();
   };
 
   render() {

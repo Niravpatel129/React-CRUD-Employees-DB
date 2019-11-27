@@ -50,6 +50,10 @@ class Employees extends Component {
   toggleUpdateModal = () => {
     //helper function passed down to child to toggle modal
     this.setState({ showUpdateModal: false });
+    this.playSound();
+  };
+
+  playSound = () => {
     zippi.play();
   };
 
@@ -160,6 +164,7 @@ class Employees extends Component {
           <AddEmployeeButton
             globalAlerts={this.props.globalAlerts}
             getEmployees={this.getEmployees}
+            playSouds={this.playSound}
           />
           {this.state.showUpdateModal && (
             <UpdateEmployeeModal
