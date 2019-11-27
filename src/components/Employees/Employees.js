@@ -73,7 +73,7 @@ class Employees extends Component {
         accessor: "profession"
       },
       {
-        Header: "city",
+        Header: "City",
         accessor: "city"
       },
       {
@@ -88,7 +88,7 @@ class Employees extends Component {
         }
       },
       {
-        Header: "color",
+        Header: "Colour",
         Cell: props => {
           let color = props.original.color;
           return (
