@@ -118,10 +118,9 @@ class Employees extends Component {
                     setTimeout(() => {
                       console.log(response);
                       this.props.globalAlerts("Delete Successful");
-                      this.setState({ deleting: false });
 
                       this.getEmployees();
-                    }, 50);
+                    }, 100);
                   });
               }}
               className="actionButtonDelete"
@@ -145,11 +144,7 @@ class Employees extends Component {
                 onClick: (e, handleOriginal) => {
                   e.stopPropagation();
 
-                  if (
-                    rowInfo &&
-                    rowInfo.original &&
-                    this.state.deleting === false
-                  ) {
+                  if (rowInfo && rowInfo.original) {
                     this.setState({
                       showUpdateModal: true,
                       valueToUpdate: rowInfo.original
