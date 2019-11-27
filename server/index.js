@@ -10,7 +10,6 @@ const employeeSchemaTemplate = require("./Schemas/employees");
 
 mongooseSetup();
 
-console.log(employeeSchemaTemplate());
 let employeeSchema = employeeSchemaTemplate();
 
 let EmployeesDataBase = mongoose.model("employees", employeeSchema);
@@ -64,7 +63,6 @@ app.delete("/api/deleteEmployee", cors(corsOptions), (req, res, next) => {
 app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  console.log(req.body);
   let employeeInfo = req.body;
   let newEmployee = new EmployeesDataBase({
     id: employeeInfo.id,
@@ -77,12 +75,12 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
     assigned: employeeInfo.assigned
   });
 
-  newEmployee.save(function(err, book) {
+  newEmployee.save(function(err, employee) {
     if (err) return console.error(err);
 
     updateEmplyees();
     res.send(200);
-    console.log(book.name + " saved to bookstore collection.");
+    console.log(employee.name + " added to the database.");
   });
 });
 

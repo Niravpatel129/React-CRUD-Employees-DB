@@ -39,7 +39,6 @@ class Employees extends Component {
 
   render() {
     const { employees } = this.state;
-    console.log(employees);
     const columns = [
       {
         Header: "ID",
