@@ -8,11 +8,17 @@ import ReactTable from "react-table";
 
 import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
+import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
 class Employees extends Component {
   constructor(props) {
     super(props);
-    this.state = { employees: [], dataLoaded: false };
+    this.state = {
+      employees: [],
+      dataLoaded: false,
+      showUpdateModal: false,
+      valueToUpdate: null
+    };
   }
 
   componentDidMount = () => {
@@ -37,12 +43,17 @@ class Employees extends Component {
       .catch(err => console.log(err));
   }
 
+  toggleUpdateModal = () => {
+    this.setState({ showUpdateModal: false });
+  };
+
   render() {
     const { employees } = this.state;
     const columns = [
       {
         Header: "ID",
-        accessor: "id"
+        accessor: "id",
+        filterable: true
       },
       {
         Header: "Name",
@@ -68,7 +79,6 @@ class Employees extends Component {
         Header: "Asigned",
         Cell: props => {
           let asignedValue = props.original.assigned;
-          console.log(asignedValue);
           return asignedValue ? "Yes" : "No";
         }
       },
@@ -121,11 +131,33 @@ class Employees extends Component {
     if (this.state.dataLoaded) {
       return (
         <div className="Employees">
-          <ReactTable className="table" data={employees} columns={columns} />
+          <ReactTable
+            className="table"
+            data={employees}
+            columns={columns}
+            getTdProps={(state, rowInfo, column, instance) => {
+              return {
+                onClick: (e, handleOriginal) => {
+                  if (rowInfo && rowInfo.original) {
+                    this.setState({
+                      showUpdateModal: true,
+                      valueToUpdate: rowInfo.original
+                    });
+                  }
+                }
+              };
+            }}
+          />
           <AddEmployeeButton
             globalAlerts={this.props.globalAlerts}
             getEmployees={this.getEmployees}
           />
+          {this.state.showUpdateModal && (
+            <UpdateEmployeeModal
+              toggleUpdateModal={this.toggleUpdateModal}
+              data={this.state.valueToUpdate}
+            />
+          )}
         </div>
       );
     } else {

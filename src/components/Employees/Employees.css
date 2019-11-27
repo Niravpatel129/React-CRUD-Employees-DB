@@ -12,3 +12,12 @@
 .rt-tr:hover {
   background-color: antiquewhite;
 }
+
+.Employees .ReactTable .rt-thead.-filters input,
+.ReactTable .rt-thead.-filters select {
+  background-color: transparent;
+  border: none;
+  background-color: antiquewhite;
+  padding: 0.5em;
+  color: coral;
+}
