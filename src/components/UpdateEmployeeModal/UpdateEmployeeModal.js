@@ -52,6 +52,7 @@ class UpdateEmployeeModal extends Component {
   handleSubmit = event => {
     event.preventDefault();
     console.log(event);
+    this.closeModal();
   };
 
   render() {
