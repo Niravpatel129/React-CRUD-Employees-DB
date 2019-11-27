@@ -34,6 +34,7 @@ class Employees extends Component {
 
   render() {
     const { employees } = this.state;
+    console.log(employees);
     const columns = [
       {
         Header: "ID",
@@ -58,6 +59,14 @@ class Employees extends Component {
       {
         Header: "Branch",
         accessor: "branch"
+      },
+      {
+        Header: "Asigned",
+        Cell: props => {
+          let asignedValue = props.original.assigned;
+          console.log(asignedValue);
+          return asignedValue ? "Yes" : "No";
+        }
       },
       {
         Header: "color",
