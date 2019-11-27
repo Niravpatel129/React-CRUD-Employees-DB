@@ -2,10 +2,14 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 
 module.exports = function mongooseSetup() {
-  mongoose.connect(process.env.API_KEY, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+  mongoose.connect(
+    "mongodb://admin:dragon1@ds135983.mlab.com:35983/employees" ||
+      process.env.API_KEY,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    }
+  );
 
   let db = mongoose.connection;
 
