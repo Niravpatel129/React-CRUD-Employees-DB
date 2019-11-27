@@ -22,7 +22,9 @@ class Employees extends Component {
     this.getEmployees = this.getEmployees.bind(this);
 
     axios
-      .get("http://localhost:8080/api/employees")
+      .get("http://localhost:8080/api/employees", {
+        headers: { "content-type": "application/x-www-form-urlencoded" }
+      })
       .then(response => {
         // handle success
         this.setState({ employees: response.data, show: false });
