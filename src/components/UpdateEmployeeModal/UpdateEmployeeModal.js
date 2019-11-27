@@ -7,7 +7,7 @@ import axios from "axios";
 class UpdateEmployeeModal extends Component {
   constructor(props) {
     super(props);
-
+    // destructing from props and setting it to state
     const {
       _id,
       id,

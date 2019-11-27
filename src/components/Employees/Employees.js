@@ -22,10 +22,12 @@ class Employees extends Component {
   }
 
   componentDidMount = () => {
+    // get data when component is mounted
     this.getEmployees();
   };
 
   getEmployees() {
+    // Axios call to get all employees from back-end
     this.getEmployees = this.getEmployees.bind(this);
 
     axios
@@ -44,12 +46,15 @@ class Employees extends Component {
   }
 
   toggleUpdateModal = () => {
+    //helper function passed down to child to toggle modal
     this.setState({ showUpdateModal: false });
   };
 
   render() {
     const { employees } = this.state;
+
     const columns = [
+      // react.table component prop value
       {
         Header: "ID",
         accessor: "id",
@@ -163,6 +168,7 @@ class Employees extends Component {
         </div>
       );
     } else {
+      // display loading spinner while data is loading
       return <LoadingSpinner />;
     }
   }

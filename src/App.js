@@ -7,7 +7,13 @@ import swal from "sweetalert";
 
 class App extends React.Component {
   globalAlerts(message) {
-    swal(message);
+    // passed down to child components to display global messages
+    swal({
+      title: "Sucess!",
+      text: message,
+      icon: "success",
+      button: "Continue!"
+    });
   }
 
   render() {
