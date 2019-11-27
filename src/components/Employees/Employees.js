@@ -7,11 +7,12 @@ import axios from "axios";
 import ReactTable from "react-table";
 
 import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 
 class Employees extends Component {
   constructor(props) {
     super(props);
-    this.state = { employees: [] };
+    this.state = { employees: [], dataLoaded: false };
   }
 
   componentDidMount = () => {
@@ -27,7 +28,11 @@ class Employees extends Component {
       })
       .then(response => {
         // handle success
-        this.setState({ employees: response.data, show: false });
+        this.setState({
+          employees: response.data,
+          show: false,
+          dataLoaded: true
+        });
       })
       .catch(err => console.log(err));
   }
@@ -114,15 +119,19 @@ class Employees extends Component {
       }
     ];
 
-    return (
-      <div className="Employees">
-        <ReactTable className="table" data={employees} columns={columns} />
-        <AddEmployeeButton
-          globalAlerts={this.props.globalAlerts}
-          getEmployees={this.getEmployees}
-        />
-      </div>
-    );
+    if (this.state.dataLoaded) {
+      return (
+        <div className="Employees">
+          <ReactTable className="table" data={employees} columns={columns} />
+          <AddEmployeeButton
+            globalAlerts={this.props.globalAlerts}
+            getEmployees={this.getEmployees}
+          />
+        </div>
+      );
+    } else {
+      return <LoadingSpinner />;
+    }
   }
 }
 

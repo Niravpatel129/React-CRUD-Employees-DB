@@ -14,7 +14,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Plexxis Employees</h1>
-
         <Employees globalAlerts={this.globalAlerts} />
       </div>
     );

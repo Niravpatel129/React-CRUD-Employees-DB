@@ -5,28 +5,13 @@ const app = express();
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-mongoose.connect("mongodb://admin:dragon1@ds135983.mlab.com:35983/employees", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
+const mongooseSetup = require("./mongooseSetup/mongooseSetup.js");
+const employeeSchemaTemplate = require("./Schemas/employees");
 
-let db = mongoose.connection;
+mongooseSetup();
 
-db.on("error", console.error.bind(console, "connection error:"));
-db.once("open", function() {
-  console.log("connection success to database!");
-});
-
-let employeeSchema = new Schema({
-  id: Number,
-  name: String,
-  code: String,
-  profession: String,
-  color: String,
-  city: String,
-  branch: String,
-  assigned: Boolean
-});
+console.log(employeeSchemaTemplate());
+let employeeSchema = employeeSchemaTemplate();
 
 let EmployeesDataBase = mongoose.model("employees", employeeSchema);
 let employeess;

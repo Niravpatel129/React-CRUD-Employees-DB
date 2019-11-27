@@ -74,46 +74,53 @@ class AddEmployeeModal extends Component {
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>
                 <input
-                  type="text"
+                  type="number"
                   name="id"
                   onChange={this.handleIdChange}
                   placeholder="id"
+                  required
                 />
                 <input
                   type="text"
                   name="name"
                   onChange={this.handleNameChange}
                   placeholder="name"
+                  required
                 />
                 <input
                   type="text"
                   name="code"
                   onChange={this.handleCodeChange}
                   placeholder="code"
+                  required
                 />
                 <input
                   type="text"
                   name="profession"
                   onChange={this.handleProfessionChange}
                   placeholder="profession"
+                  required
                 />
                 <input
                   type="text"
                   name="city"
                   onChange={this.handleCityChange}
                   placeholder="city"
+                  required
                 />
                 <input
                   type="text"
                   name="branch"
                   onChange={this.handleBranchChange}
                   placeholder="branch"
+                  required
                 />
                 <input
                   type="text"
                   name="color"
                   onChange={this.handleColorChange}
                   placeholder="color"
+                  required
                 />
               </fieldset>
               <input
@@ -121,6 +128,7 @@ class AddEmployeeModal extends Component {
                 name="next"
                 className="next action-button"
                 value="Submit"
+                required
               />{" "}
             </form>
           </div>
