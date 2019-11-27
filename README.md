@@ -23,6 +23,7 @@ Create a simple but **impressive** (looks good, works well, has intuitive design
 - Added Loading spinner for when the data becomes larger and the content takes a while to load
 - Updated API endpoints and cleaned up the server code a bit, (ideally would like to do more but not nessarcry for this scale of project in my oppinion)
 - Added some CSS to make it look "better", considered using SCSS but didn't think it was needed for this scale.
+- Added stopPropagation for delete and click to update
 
 ## Hosted on Heroku at:
 

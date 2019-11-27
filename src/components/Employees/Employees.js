@@ -109,8 +109,7 @@ class Employees extends Component {
           return (
             <button
               onClick={val => {
-                console.log("Deleting:");
-                console.log(props.original._id);
+                val.stopPropagation();
                 axios
                   .delete("http://localhost:8080/api/deleteEmployee", {
                     params: { employeeId: props.original._id }
@@ -119,6 +118,7 @@ class Employees extends Component {
                     setTimeout(() => {
                       console.log(response);
                       this.props.globalAlerts("Delete Successful");
+                      this.setState({ deleting: false });
 
                       this.getEmployees();
                     }, 50);
@@ -143,7 +143,13 @@ class Employees extends Component {
             getTdProps={(state, rowInfo, column, instance) => {
               return {
                 onClick: (e, handleOriginal) => {
-                  if (rowInfo && rowInfo.original) {
+                  e.stopPropagation();
+
+                  if (
+                    rowInfo &&
+                    rowInfo.original &&
+                    this.state.deleting === false
+                  ) {
                     this.setState({
                       showUpdateModal: true,
                       valueToUpdate: rowInfo.original
