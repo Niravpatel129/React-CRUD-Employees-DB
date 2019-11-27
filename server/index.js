@@ -58,23 +58,32 @@ let corsOptions = {
 };
 
 app.get("/api/employees", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200);
   res.send(JSON.stringify(employeess, null, 2));
 });
 
 app.delete("/api/deleteEmployee", cors(corsOptions), (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   let employeeID = req.query.employeeId;
 
-  EmployeesDataBase.deleteOne({ _id: employeeID }, function(err) {
-    if (err) return handleError(err);
-  }).then(() => {
+  EmployeesDataBase.deleteOne(
+    {
+      _id: employeeID
+    },
+    function(err) {
+      if (err) return handleError(err);
+    }
+  ).then(() => {
     updateEmplyees();
     res.send(200);
   });
 });
 
 app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+
   console.log(req.body);
   let employeeInfo = req.body;
   let newEmployee = new EmployeesDataBase({
