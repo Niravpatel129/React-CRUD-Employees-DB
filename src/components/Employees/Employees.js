@@ -10,6 +10,8 @@ import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
+let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
+
 class Employees extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +50,7 @@ class Employees extends Component {
   toggleUpdateModal = () => {
     //helper function passed down to child to toggle modal
     this.setState({ showUpdateModal: false });
+    zippi.play();
   };
 
   render() {
