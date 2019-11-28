@@ -6,7 +6,11 @@
 }
 
 .Employees .table button:hover {
-  background-color: whitesmoke;
+  background-color: salmon;
+  transition: 0.4s;
+  -webkit-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  transform: scale(1.02);
 }
 
 .rt-tr:hover {
@@ -23,5 +27,5 @@
 }
 
 button {
-  background-color: antiquewhite;
+  background-color: aliceblue;
 }
