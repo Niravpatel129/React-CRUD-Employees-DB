@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import "./Employees.css";
+import "./EmployeesTable.css";
 import "react-table/react-table.css";
 
 import axios from "axios";
@@ -12,7 +12,7 @@ import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
-class Employees extends Component {
+class EmployeesTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -183,4 +183,4 @@ class Employees extends Component {
   }
 }
 
-export default Employees;
+export default EmployeesTable;
