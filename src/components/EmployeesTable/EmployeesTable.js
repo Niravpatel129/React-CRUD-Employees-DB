@@ -66,7 +66,12 @@ class EmployeesTable extends Component {
         Header: "ID",
         accessor: "id",
         filterable: true,
-        Filter: ({ filter, onChange }) => <input placeholder="🔍" />
+        Filter: ({ filter, onChange }) => (
+          <input
+            onChange={event => onChange(event.target.value)}
+            placeholder="🔍"
+          />
+        )
       },
       {
         Header: "Name",
