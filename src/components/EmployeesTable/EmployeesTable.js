@@ -95,6 +95,7 @@ class EmployeesTable extends Component {
       },
       {
         Header: "Asigned",
+        accessor: "asigned",
         Cell: props => {
           let asignedValue = props.original.assigned;
           return asignedValue ? "Yes" : "No";
@@ -102,6 +103,7 @@ class EmployeesTable extends Component {
       },
       {
         Header: "Colour",
+        accessor: "colour",
         Cell: props => {
           let color = props.original.color;
           return (
@@ -118,6 +120,7 @@ class EmployeesTable extends Component {
       },
       {
         Header: "Actions",
+        accessor: null,
         Cell: props => {
           return (
             <button
