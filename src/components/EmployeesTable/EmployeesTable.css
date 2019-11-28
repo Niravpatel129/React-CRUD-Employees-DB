@@ -19,13 +19,22 @@
 
 .Employees .ReactTable .rt-thead.-filters input,
 .ReactTable .rt-thead.-filters select {
-  background-color: transparent;
-  border: none;
+  border: 0.6px solid black;
   background-color: antiquewhite;
   padding: 0.5em;
   color: coral;
 }
 
+.Employees .ReactTable .rt-thead.-filters input,
+.ReactTable .rt-thead.-filters select {
+  width: 100%;
+}
+
 button {
   background-color: aliceblue;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 0.7s 0.7s ease;
+  opacity: 0;
 }
