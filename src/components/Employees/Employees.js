@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 
 import "./Employees.css";
 import "react-table/react-table.css";
@@ -182,5 +183,7 @@ class Employees extends Component {
     }
   }
 }
+
+Employees.propTypes = { globalAlerts: propTypes.func };
 
 export default Employees;
