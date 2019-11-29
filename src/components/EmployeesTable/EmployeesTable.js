@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import propTypes from "prop-types";
 
-import "./Employees.css";
+import "./EmployeesTable.css";
 import "react-table/react-table.css";
 
 import axios from "axios";
@@ -13,7 +13,7 @@ import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
-class Employees extends Component {
+class EmployeesTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -66,7 +66,13 @@ class Employees extends Component {
       {
         Header: "ID",
         accessor: "id",
-        filterable: true
+        filterable: true,
+        Filter: ({ filter, onChange }) => (
+          <input
+            onChange={event => onChange(event.target.value)}
+            placeholder="🔍"
+          />
+        )
       },
       {
         Header: "Name",
@@ -90,6 +96,7 @@ class Employees extends Component {
       },
       {
         Header: "Asigned",
+        accessor: "asigned",
         Cell: props => {
           let asignedValue = props.original.assigned;
           return asignedValue ? "Yes" : "No";
@@ -97,6 +104,7 @@ class Employees extends Component {
       },
       {
         Header: "Colour",
+        accessor: "colour",
         Cell: props => {
           let color = props.original.color;
           return (
@@ -113,6 +121,7 @@ class Employees extends Component {
       },
       {
         Header: "Actions",
+        accessor: null,
         Cell: props => {
           return (
             <button
@@ -184,6 +193,6 @@ class Employees extends Component {
   }
 }
 
-Employees.propTypes = { globalAlerts: propTypes.func };
+EmployeesTable.propTypes = { globalAlerts: propTypes.func };
 
-export default Employees;
+export default EmployeesTable;
