@@ -16,4 +16,5 @@
 
 .button:hover {
   background-color: darkgreen;
+  transition: 0.5s;
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import Employees from "./components/Employees/Employees";
+import EmployeesTable from "./components/EmployeesTable/EmployeesTable";
 
 import swal from "sweetalert";
 
@@ -20,7 +20,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Plexxis Employees</h1>
-        <Employees globalAlerts={this.globalAlerts} />
+        <EmployeesTable globalAlerts={this.globalAlerts} />
       </div>
     );
   }
