@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 
 import AddEmployeeModal from "../AddEmployeeModal/AddEmployeeModal";
 
@@ -37,5 +38,12 @@ class AddEmployeeButton extends Component {
     );
   }
 }
+
+AddEmployeeButton.propTypes = {
+  globalAlerts: propTypes.func,
+  closeModal: propTypes.func,
+  getEmployees: propTypes.func,
+  visible: propTypes.bool
+};
 
 export default AddEmployeeButton;

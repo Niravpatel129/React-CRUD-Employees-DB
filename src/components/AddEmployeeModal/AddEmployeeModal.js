@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
 
 import Modal from "react-awesome-modal";
 
@@ -6,10 +7,8 @@ import axios from "axios";
 
 import "./AddEmployeeModal.css";
 class AddEmployeeModal extends Component {
-  componentDidMount() {
-    console.log();
-  }
-  // with React, 2 way binding is good too, but this is a alternative.
+  componentDidMount() {}
+  // with React, 2 way binding is good too, but this is a alternative. !! Future convert this to react hooks !!
   handleIdChange = event => {
     this.id = event.target.value;
   };
@@ -137,5 +136,12 @@ class AddEmployeeModal extends Component {
     );
   }
 }
+
+AddEmployeeModal.propTypes = {
+  closeModal: propTypes.func,
+  getEmployees: propTypes.func,
+  globalAlerts: propTypes.func,
+  visible: propTypes.bool
+};
 
 export default AddEmployeeModal;

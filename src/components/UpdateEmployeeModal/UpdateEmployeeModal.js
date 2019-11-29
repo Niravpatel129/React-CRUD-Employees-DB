@@ -1,7 +1,10 @@
 import React, { Component } from "react";
+import propTypes from "prop-types";
+
 import Modal from "react-awesome-modal";
 
 import "./UpdateEmployeeModal.css";
+
 import axios from "axios";
 
 class UpdateEmployeeModal extends Component {
@@ -175,5 +178,12 @@ class UpdateEmployeeModal extends Component {
     );
   }
 }
+
+UpdateEmployeeModal.propTypes = {
+  data: propTypes.object,
+  toggleUpdateModal: propTypes.func,
+  globalAlerts: propTypes.func,
+  getEmployees: propTypes.func
+};
 
 export default UpdateEmployeeModal;
