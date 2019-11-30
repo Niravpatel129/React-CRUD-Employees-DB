@@ -140,8 +140,7 @@ class AddEmployeeModal extends Component {
 AddEmployeeModal.propTypes = {
   closeModal: propTypes.func,
   getEmployees: propTypes.func,
-  globalAlerts: propTypes.func,
-  visible: propTypes.bool
+  globalAlerts: propTypes.func
 };
 
 export default AddEmployeeModal;

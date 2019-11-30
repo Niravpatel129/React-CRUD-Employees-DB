@@ -41,9 +41,8 @@ class AddEmployeeButton extends Component {
 
 AddEmployeeButton.propTypes = {
   globalAlerts: propTypes.func,
-  closeModal: propTypes.func,
-  getEmployees: propTypes.func,
-  visible: propTypes.bool
+  playSouds: propTypes.func,
+  getEmployees: propTypes.func
 };
 
 export default AddEmployeeButton;
