@@ -19,6 +19,7 @@ let employeess;
 function updateEmplyees() {
   EmployeesDataBase.find(function(err, employees) {
     if (err) {
+      console.log(err);
     } else {
       employeess = employees;
     }
