@@ -32,6 +32,7 @@ class AddEmployeeButton extends Component {
             visible={this.state.visible}
             closeModal={this.closeModal}
             getEmployees={this.props.getEmployees}
+            apiURL={this.props.apiURL}
           />
         )}
       </React.Fragment>

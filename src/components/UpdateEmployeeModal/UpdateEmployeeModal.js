@@ -82,7 +82,7 @@ class UpdateEmployeeModal extends Component {
   handleSubmit = event => {
     event.preventDefault();
     axios
-      .put("http://localhost:8080/api/updateEmployee", {
+      .put(this.props.apiURL + "/api/updateEmployee", {
         _id: this.state._id, // hidden primary key
         id: this.state.id,
         name: this.state.name,
