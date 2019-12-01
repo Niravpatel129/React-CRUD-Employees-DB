@@ -13,7 +13,7 @@ class App extends React.Component {
       this.apiURL = "http://localhost:8080";
     } else {
       // production code
-      this.apiURL = "https://backend-api-crud-app.herokuapp.com/";
+      this.apiURL = "https://backend-api-crud-app.herokuapp.com";
     }
   }
 
