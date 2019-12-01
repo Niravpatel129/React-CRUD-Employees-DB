@@ -11,7 +11,7 @@ class App extends React.Component {
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       // dev code
       this.apiURL = "http://localhost:8080";
-      console.log("dev environment");
+      console.log("dev environment", process.env.HEROKU);
     } else {
       // production code
       this.apiURL = "https://backend-api-crud-app.herokuapp.com";
