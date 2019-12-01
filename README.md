@@ -1,6 +1,6 @@
 # Plexxis Interview Exercise
 ![App Demo](demo/demo.gif)
-
+Heroku Access URL: https://crud-code-test.herokuapp.com/
 
 ## Requirements
 
