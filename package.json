@@ -23,11 +23,12 @@
     "sweetalert2": "^9.4.0"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g serve",
-    "devstart": "react-scripts start",
-    "start": "serve -s build",
+    "start": "concurrently --kill-others \"node server\" \"npm run start:react-app\"",
+    "start:react-app": "react-scripts start",
     "build": "react-scripts build",
-    "eject": "react-scripts eject"
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "custom:start": "concurrently --kill-others \"npm run custom:build\" \"npm run start\""
   },
   "heroku-run-build-script": true
 }
