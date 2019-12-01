@@ -64,11 +64,7 @@ class AddEmployeeModal extends Component {
   render() {
     return (
       <section>
-        <Modal
-          visible={true}
-          effect="fadeInUp"
-          onClickAway={() => this.closeModal()}
-        >
+        <Modal visible={true} onClickAway={() => this.closeModal()}>
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>
