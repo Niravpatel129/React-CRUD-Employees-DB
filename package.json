@@ -24,8 +24,7 @@
     "sweetalert2": "^9.4.0"
   },
   "scripts": {
-    "heroku-postbuild": "npm run build",
-    "start": "serve -s build",
+    "start": "concurrently --kill-others \"node server\" \"npm run start:react-app\"",
     "start:react-app": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
