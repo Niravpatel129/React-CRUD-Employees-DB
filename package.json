@@ -29,5 +29,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "custom:start": "concurrently --kill-others \"npm run custom:build\" \"npm run start\""
-  }
+  },
+  "heroku-run-build-script": true
 }
