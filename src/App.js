@@ -6,6 +6,12 @@ import EmployeesTable from "./components/EmployeesTable/EmployeesTable";
 import swal from "sweetalert";
 
 class App extends React.Component {
+  static getDerivedStateFromError(error) {
+    // Update state so the next render will show the fallback UI.
+    console.log(error);
+    return { hasError: true };
+  }
+
   globalAlerts(message) {
     // passed down to child components to display global messages
     swal({
