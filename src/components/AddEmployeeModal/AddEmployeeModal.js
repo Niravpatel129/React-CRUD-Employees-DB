@@ -40,8 +40,9 @@ class AddEmployeeModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
+    console.log(this.props.apiURL);
     axios
-      .post("http://localhost:8080/api/addEmployee", {
+      .post(this.props.apiURL + "/api/addEmployee", {
         id: this.id,
         name: this.name,
         code: this.code,

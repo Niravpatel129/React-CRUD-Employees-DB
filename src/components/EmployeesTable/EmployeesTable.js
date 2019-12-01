@@ -11,7 +11,7 @@ import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
-import { columns } from "./columns.js";
+// import { columns } from "./columns.js";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
@@ -34,9 +34,8 @@ class EmployeesTable extends Component {
   getEmployees() {
     // Axios call to get all employees from back-end
     this.getEmployees = this.getEmployees.bind(this);
-
     axios
-      .get("http://localhost:8080/api/employees", {
+      .get(this.props.apiURL + "/api/employees", {
         headers: { "content-type": "application/x-www-form-urlencoded" }
       })
       .then(response => {
@@ -62,6 +61,93 @@ class EmployeesTable extends Component {
 
   render() {
     const { employees } = this.state;
+
+    const columns = [
+      {
+        Header: "ID",
+        accessor: "id",
+        filterable: true,
+        Filter: ({ filter, onChange }) => (
+          <input
+            onChange={event => onChange(event.target.value)}
+            placeholder="🔍"
+          />
+        )
+      },
+      {
+        Header: "Name",
+        accessor: "name"
+      },
+      {
+        Header: "Code",
+        accessor: "code"
+      },
+      {
+        Header: "Profession",
+        accessor: "profession"
+      },
+      {
+        Header: "City",
+        accessor: "city"
+      },
+      {
+        Header: "Branch",
+        accessor: "branch"
+      },
+      {
+        Header: "Asigned",
+        accessor: "asigned",
+        Cell: props => {
+          let asignedValue = props.original.assigned;
+          return asignedValue ? "Yes" : "No";
+        }
+      },
+      {
+        Header: "Colour",
+        accessor: "colour",
+        Cell: props => {
+          let color = props.original.color;
+          return (
+            <div
+              style={{
+                width: "100%",
+                height: "100%",
+                backgroundColor: color,
+                borderRadius: "2px"
+              }}
+            ></div>
+          );
+        }
+      },
+      {
+        Header: "Actions",
+        accessor: null,
+        Cell: props => {
+          return (
+            <button
+              onClick={val => {
+                val.stopPropagation();
+                axios
+                  .delete(this.props.apiURL + "/api/deleteEmployee", {
+                    params: { employeeId: props.original._id }
+                  })
+                  .then(response => {
+                    setTimeout(() => {
+                      console.log(response);
+                      this.props.globalAlerts("Delete Successful");
+
+                      this.getEmployees();
+                    }, 100);
+                  });
+              }}
+              className="actionButtonDelete"
+            >
+              Delete
+            </button>
+          );
+        }
+      }
+    ];
 
     if (this.state.dataLoaded) {
       return (
@@ -89,6 +175,7 @@ class EmployeesTable extends Component {
             globalAlerts={this.props.globalAlerts}
             getEmployees={this.getEmployees}
             playSouds={this.playSound}
+            apiURL={this.props.apiURL}
           />
           {this.state.showUpdateModal && (
             <UpdateEmployeeModal
@@ -96,6 +183,7 @@ class EmployeesTable extends Component {
               data={this.state.valueToUpdate}
               globalAlerts={this.props.globalAlerts}
               getEmployees={this.getEmployees}
+              apiURL={this.props.apiURL}
             />
           )}
         </div>
