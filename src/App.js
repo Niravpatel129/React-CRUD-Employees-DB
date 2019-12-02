@@ -2,12 +2,17 @@ import React from "react";
 import "./App.css";
 
 import EmployeesTable from "./components/EmployeesTable/EmployeesTable";
+import NightModeSwitch from "./components/NightModeSwitch/NightModeSwitch";
 
 import swal from "sweetalert";
+import { css } from "emotion";
 
 class App extends React.Component {
   constructor() {
     super();
+    this.state = { darkMode: true, component: "" };
+    this.flipflopValue = this.state.darkMode;
+
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
       // dev code
       this.apiURL = "http://localhost:8080";
@@ -25,6 +30,32 @@ class App extends React.Component {
     return { hasError: true };
   }
 
+  triggerThemeSwap = e => {
+    if (this.flipflopValue) {
+      console.log(this.flipflopValue);
+      document.documentElement.style.background = "#222222";
+      this.setState({
+        component: css({
+          color: "white",
+          darkMode: false
+        })
+      });
+      this.flipflopValue = !this.flipflopValue;
+    } else {
+      console.log(this.flipflopValue);
+      document.documentElement.style.background = "";
+      // console.log("false");
+
+      this.setState({
+        component: css({
+          color: "black",
+          darkMode: true
+        })
+      });
+      this.flipflopValue = !this.flipflopValue;
+    }
+  };
+
   globalAlerts(message) {
     // passed down to child components to display global messages
     swal({
@@ -37,8 +68,9 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
+      <div className={this.state.component}>
         <h1>Plexxis Employees</h1>
+        <NightModeSwitch triggerThemeSwap={this.triggerThemeSwap} />
         <EmployeesTable globalAlerts={this.globalAlerts} apiURL={this.apiURL} />
       </div>
     );
