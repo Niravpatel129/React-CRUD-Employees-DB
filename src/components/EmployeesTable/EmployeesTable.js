@@ -150,7 +150,7 @@ class EmployeesTable extends PureComponent {
             columns={columns}
             getTdProps={(state, rowInfo, column, instance) => {
               return {
-                onClick: (e, handleOriginal) => {
+                onClick: e => {
                   e.stopPropagation();
 
                   if (rowInfo && rowInfo.original) {
@@ -159,6 +159,21 @@ class EmployeesTable extends PureComponent {
                       valueToUpdate: rowInfo.original
                     });
                   }
+                },
+                onContextMenu: e => {
+                  e.preventDefault();
+                  let toEnableOrDisable = !rowInfo.original.assigned;
+                  axios
+                    .put(this.props.apiURL + "/api/toggleAssigned", {
+                      _id: rowInfo.original._id,
+                      toEnableOrDisable: toEnableOrDisable
+                    })
+                    .then(res => {
+                      setTimeout(() => {
+                        this.props.globalAlerts("Successfully toggled!");
+                        this.getEmployees();
+                      }, 70);
+                    });
                 }
               };
             }}
