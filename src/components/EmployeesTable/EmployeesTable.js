@@ -31,9 +31,8 @@ class EmployeesTable extends PureComponent {
     this.getEmployees();
   };
 
-  getEmployees() {
+  getEmployees = () => {
     // Axios call to get all employees from back-end
-    this.getEmployees = this.getEmployees.bind(this); // this bind is needed because this function call is passed into children
     axios
       .get(this.props.apiURL + "/api/employees", {
         headers: { "content-type": "application/x-www-form-urlencoded" }
@@ -47,7 +46,7 @@ class EmployeesTable extends PureComponent {
         });
       })
       .catch(err => console.log(err));
-  }
+  };
 
   toggleUpdateModal = () => {
     //helper function passed down to child to toggle modal
