@@ -115,4 +115,22 @@ app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
     });
 });
 
+app.put("/api/toggleAssigned", cors(corsOptions), (req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  let employeeInfo = req.body;
+  EmployeesDataBase.findByIdAndUpdate(
+    { _id: employeeInfo._id },
+    {
+      $set: { assigned: req.body.toEnableOrDisable }
+    }
+  )
+    .then(data => {
+      updateEmplyees();
+      res.sendStatus(200);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
 app.listen(8080, () => console.log("Job Dispatch API running on port 8080!"));
