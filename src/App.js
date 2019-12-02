@@ -32,7 +32,6 @@ class App extends React.Component {
 
   triggerThemeSwap = e => {
     if (this.flipflopValue) {
-      console.log(this.flipflopValue);
       document.documentElement.style.background = "#222222";
       this.setState({
         component: css({
@@ -42,10 +41,7 @@ class App extends React.Component {
       });
       this.flipflopValue = !this.flipflopValue;
     } else {
-      console.log(this.flipflopValue);
       document.documentElement.style.background = "";
-      // console.log("false");
-
       this.setState({
         component: css({
           color: "black",
