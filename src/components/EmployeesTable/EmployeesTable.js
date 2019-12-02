@@ -31,21 +31,14 @@ class EmployeesTable extends PureComponent {
     this.getEmployees();
   };
 
-  getEmployees = () => {
-    // Axios call to get all employees from back-end
-    axios
-      .get(this.props.apiURL + "/api/employees", {
-        headers: { "content-type": "application/x-www-form-urlencoded" }
-      })
-      .then(response => {
-        // handle success
-        this.setState({
-          employees: response.data,
-          show: false,
-          dataLoaded: true
-        });
-      })
-      .catch(err => console.log(err));
+  getEmployees = async () => {
+    //
+    let res = await axios.get(this.props.apiURL + "/api/employees");
+    this.setState({
+      employees: res.data,
+      show: false,
+      dataLoaded: true
+    });
   };
 
   toggleUpdateModal = () => {
@@ -109,7 +102,6 @@ class EmployeesTable extends PureComponent {
           if (!colorCheckerHelper(color)) {
             color = "white"; // default color for invalid arguments
           }
-          console.log(props.original);
           return (
             <div
               style={{
