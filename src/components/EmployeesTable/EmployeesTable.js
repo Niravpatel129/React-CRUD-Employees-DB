@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import propTypes from "prop-types";
 
 import "./EmployeesTable.css";
@@ -15,7 +15,7 @@ import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
-class EmployeesTable extends Component {
+class EmployeesTable extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +33,7 @@ class EmployeesTable extends Component {
 
   getEmployees() {
     // Axios call to get all employees from back-end
-    this.getEmployees = this.getEmployees.bind(this);
+    this.getEmployees = this.getEmployees.bind(this); // this bind is needed because this function call is passed into children
     axios
       .get(this.props.apiURL + "/api/employees", {
         headers: { "content-type": "application/x-www-form-urlencoded" }
