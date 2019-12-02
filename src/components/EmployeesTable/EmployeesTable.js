@@ -11,7 +11,7 @@ import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
-// import { columns } from "./columns.js";
+import { colorCheckerHelper } from "./colorCheckerHelper.js";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
@@ -107,6 +107,10 @@ class EmployeesTable extends PureComponent {
         accessor: "colour",
         Cell: props => {
           let color = props.original.color;
+          if (!colorCheckerHelper(color)) {
+            color = "white"; // default color for invalid arguments
+          }
+
           return (
             <div
               style={{
