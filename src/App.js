@@ -31,25 +31,16 @@ class App extends React.Component {
   }
 
   triggerThemeSwap = e => {
-    if (this.flipflopValue) {
-      document.documentElement.style.background = "#222222";
-      this.setState({
-        component: css({
-          color: "white",
-          darkMode: false
-        })
-      });
-      this.flipflopValue = !this.flipflopValue;
-    } else {
-      document.documentElement.style.background = "";
-      this.setState({
-        component: css({
-          color: "black",
-          darkMode: true
-        })
-      });
-      this.flipflopValue = !this.flipflopValue;
-    }
+    const isWhiteMode = this.flipflopValue;
+
+    document.documentElement.style.background = isWhiteMode ? "#222222" : "";
+    this.setState({
+      component: css({
+        color: isWhiteMode ? "white" : "dark",
+        darkMode: !isWhiteMode
+      })
+    });
+    this.flipflopValue = !this.flipflopValue;
   };
 
   globalAlerts(message) {

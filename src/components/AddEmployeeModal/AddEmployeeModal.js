@@ -7,32 +7,15 @@ import axios from "axios";
 
 import "./AddEmployeeModal.css";
 class AddEmployeeModal extends Component {
-  componentDidMount() {}
   // with React, 2 way binding is good too, but this is a alternative. !! Future convert this to react hooks !!
-  handleIdChange = event => {
-    this.id = event.target.value;
-  };
-  handleNameChange = event => {
-    this.name = event.target.value;
-  };
-  handleCodeChange = event => {
-    this.code = event.target.value;
-  };
-  handleProfessionChange = event => {
-    this.profession = event.target.value;
-  };
-  handleCityChange = event => {
-    this.city = event.target.value;
-  };
-  handleBranchChange = event => {
-    this.branch = event.target.value;
-  };
-  handleColorChange = event => {
-    this.color = event.target.value;
-  };
-  handleColorChange = event => {
-    this.color = event.target.value;
-  };
+
+  handleIdChange = ({ target: { value } }) => (this.id = value);
+  handleNameChange = ({ target: { value } }) => (this.name = value);
+  handleCodeChange = ({ target: { value } }) => (this.code = value);
+  handleProfessionChange = ({ target: { value } }) => (this.profession = value);
+  handleCityChange = ({ target: { value } }) => (this.city = value);
+  handleBranchChange = ({ target: { value } }) => (this.branch = value);
+  handleColorChange = ({ target: { value } }) => (this.color = value);
 
   closeModal() {
     this.props.closeModal();
