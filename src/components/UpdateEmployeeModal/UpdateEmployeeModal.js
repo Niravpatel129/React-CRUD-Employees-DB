@@ -24,14 +24,14 @@ class UpdateEmployeeModal extends Component {
 
     this.state = {
       visible: false,
-      _id: _id,
-      id: id,
-      name: name,
-      code: code,
-      profession: profession,
-      city: city,
-      branch: branch,
-      color: color
+      _id,
+      id,
+      name,
+      code,
+      profession,
+      city,
+      branch,
+      color
     };
   }
 
