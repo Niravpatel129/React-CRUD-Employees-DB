@@ -6,10 +6,8 @@ import AddEmployeeModal from "../AddEmployeeModal/AddEmployeeModal";
 import "./AddEmployeeButton.css";
 
 class AddEmployeeButton extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { visible: false };
-  }
+  state = { visible: false };
+
   shouldModalShow() {
     this.setState({ visible: true });
   }
