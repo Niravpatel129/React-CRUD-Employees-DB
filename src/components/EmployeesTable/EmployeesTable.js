@@ -95,8 +95,8 @@ class EmployeesTable extends PureComponent {
         accessor: "branch"
       },
       {
-        Header: "Asigned",
-        accessor: "asigned",
+        Header: "Assigned",
+        accessor: "assigned",
         Cell: props => {
           let asignedValue = props.original.assigned;
           return asignedValue ? "Yes" : "No";
@@ -104,13 +104,13 @@ class EmployeesTable extends PureComponent {
       },
       {
         Header: "Colour",
-        accessor: "colour",
+        accessor: "color",
         Cell: props => {
           let color = props.original.color;
           if (!colorCheckerHelper(color)) {
             color = "white"; // default color for invalid arguments
           }
-
+          console.log(props.original);
           return (
             <div
               style={{
