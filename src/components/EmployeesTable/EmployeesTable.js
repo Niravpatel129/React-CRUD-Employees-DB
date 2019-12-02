@@ -16,15 +16,12 @@ import { colorCheckerHelper } from "./colorCheckerHelper.js";
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
 class EmployeesTable extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      employees: [],
-      dataLoaded: false,
-      showUpdateModal: false,
-      valueToUpdate: null
-    };
-  }
+  state = {
+    employees: [],
+    dataLoaded: false,
+    showUpdateModal: false,
+    valueToUpdate: null
+  };
 
   componentDidMount = () => {
     // get data when component is mounted
