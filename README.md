@@ -23,7 +23,8 @@ Create a simple but **impressive** (looks good, works well, has intuitive design
 
 - Started by moving everything from App to it's individual components
 - Made Employees Component the top level component
-- Added Loading spinner for when the data becomes larger and the content takes a while to load
+- Loading spinner for when the data becomes larger and the content takes a while to load
 - Updated API endpoints and cleaned up the server code a bit
 - Added some CSS to make it look "better", considered using SCSS but didn't think it was needed for this scale.
 - Right clicking on any of the rows should toggle the assigned.
+- Dark theme option available
