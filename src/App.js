@@ -10,7 +10,10 @@ import { css } from "emotion";
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { darkMode: true, component: "" };
+
+    let theme = JSON.parse(localStorage.getItem("theme"));
+
+    this.state = { darkMode: theme, component: "" };
     this.flipflopValue = this.state.darkMode;
 
     if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
@@ -24,6 +27,11 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    // this should update based on localStorage (browserStorage)
+    this.triggerThemeSwap();
+  }
+
   static getDerivedStateFromError(error) {
     // Update state so the next render will show the fallback UI.
     console.log(error);
@@ -32,6 +40,7 @@ class App extends React.Component {
 
   triggerThemeSwap = e => {
     const isWhiteMode = this.flipflopValue;
+    localStorage.setItem("theme", isWhiteMode);
 
     document.documentElement.style.background = isWhiteMode ? "#222222" : "";
     this.setState({
@@ -54,11 +63,13 @@ class App extends React.Component {
   }
 
   render() {
-    console.log(this.state.component);
     return (
       <div className={this.state.component}>
         <h1>Plexxis Employees</h1>
-        <NightModeSwitch triggerThemeSwap={this.triggerThemeSwap} />
+        <NightModeSwitch
+          triggerThemeSwap={this.triggerThemeSwap}
+          theme={this.state.darkMode}
+        />
         <EmployeesTable globalAlerts={this.globalAlerts} apiURL={this.apiURL} />
       </div>
     );
