@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import "./NightModeSwitch.css";
 
 class NightModeSwitch extends Component {
+  handleDarkSwitch = () => {
+    this.props.triggerThemeSwap();
+  };
+
   render() {
     return (
       <div className="NightModeSwitch">
@@ -9,8 +13,9 @@ class NightModeSwitch extends Component {
           <label className="theme-switch" htmlFor="checkbox">
             <input
               type="checkbox"
-              onClick={this.props.triggerThemeSwap}
+              onClick={this.handleDarkSwitch}
               id="checkbox"
+              defaultChecked={this.props.theme}
             />
             <div className="slider round"></div>
           </label>
