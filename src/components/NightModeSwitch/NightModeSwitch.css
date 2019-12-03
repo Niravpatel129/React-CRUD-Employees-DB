@@ -5,6 +5,14 @@
   position: absolute;
   top: 3%;
 }
+
+/* Mobile Portrait and Landscape */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {
+  .theme-switch-wrapper em {
+    display: none;
+  }
+}
+
 .theme-switch-wrapper em {
   padding-top: 7px;
   margin-left: 10px;
