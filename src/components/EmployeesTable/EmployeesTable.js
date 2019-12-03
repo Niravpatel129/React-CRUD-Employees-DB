@@ -134,7 +134,9 @@ class EmployeesTable extends PureComponent {
               }}
               className="actionButtonDelete"
             >
-              🗑️
+              <span alt="delete" role="img" aria-label="delete">
+                🗑️
+              </span>
             </button>
           );
         }
