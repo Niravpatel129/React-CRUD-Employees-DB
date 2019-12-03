@@ -19,11 +19,15 @@
 }
 
 .Employees .table button:hover {
-  background-color: salmon;
+  background-color: lightgrey;
   transition: 0.4s;
   -webkit-transform: scale(1.02);
   -ms-transform: scale(1.02);
   transform: scale(1.02);
+}
+
+.css-kbn7if .Employees .table button:hover {
+  background-color: darkgray;
 }
 
 .rt-tr:hover {
