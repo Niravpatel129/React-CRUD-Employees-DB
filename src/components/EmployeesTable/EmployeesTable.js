@@ -101,6 +101,7 @@ class EmployeesTable extends PureComponent {
           }
           return (
             <div
+              className="colorCol"
               style={{
                 width: "100%",
                 height: "100%",
