@@ -1,4 +1,5 @@
 # Plexxis Interview Exercise
+
 ![App Demo](demo/demo.gif)
 
 Hosted on Heroku at url: https://crud-code-test.herokuapp.com/
@@ -27,4 +28,4 @@ Create a simple but **impressive** (looks good, works well, has intuitive design
 - Updated API endpoints and cleaned up the server code a bit
 - Added some CSS to make it look "better", considered using SCSS but didn't think it was needed for this scale.
 - Right clicking on any of the rows should toggle the assigned.
-- Dark theme option available
+- Dark theme option available, also stores which theme you use in the browser localstorage
