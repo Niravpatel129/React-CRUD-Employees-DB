@@ -54,6 +54,7 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.state.component);
     return (
       <div className={this.state.component}>
         <h1>Plexxis Employees</h1>

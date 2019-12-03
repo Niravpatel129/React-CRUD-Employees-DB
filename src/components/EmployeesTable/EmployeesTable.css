@@ -14,6 +14,10 @@
   color: rebeccapurple;
 }
 
+.css-kbn7if .Employees .table button {
+  background-color: lightgrey;
+}
+
 .Employees .table button:hover {
   background-color: salmon;
   transition: 0.4s;
@@ -26,12 +30,21 @@
   background-color: antiquewhite;
 }
 
+.css-kbn7if .rt-tr:hover {
+  background-color: #111111;
+}
+
 .Employees .ReactTable .rt-thead.-filters input,
 .ReactTable .rt-thead.-filters select {
   border: 0.6px solid black;
   background-color: antiquewhite;
   padding: 0.5em;
   color: coral;
+}
+
+.css-kbn7if .Employees .ReactTable .rt-thead.-filters input,
+.ReactTable .rt-thead.-filters select {
+  background-color: gray;
 }
 
 .Employees .ReactTable .rt-thead.-filters input,
