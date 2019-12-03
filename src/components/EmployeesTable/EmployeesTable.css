@@ -17,6 +17,9 @@
 .css-kbn7if .Employees .table button {
   background-color: lightgrey;
 }
+.css-kbn7if .colorCol {
+  opacity: 0.66;
+}
 
 .Employees .table button:hover {
   background-color: lightgrey;
