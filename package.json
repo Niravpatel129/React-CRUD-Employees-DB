@@ -21,8 +21,7 @@
     "react-table": "^6.10.3",
     "serve": "^11.2.0",
     "sweetalert": "^2.1.2",
-    "sweetalert-react": "^0.4.11",
-    "sweetalert2": "^9.4.0"
+    "sweetalert-react": "^0.4.11"
   },
   "scripts": {
     "start": "concurrently --kill-others \"node server\" \"npm run start:react-app\"",
