@@ -11,7 +11,7 @@ import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
-import { colorCheckerHelper } from "./colorCheckerHelper.js";
+import { colorCheckerHelper } from "./helpers/colorCheckerHelper";
 
 let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
 
