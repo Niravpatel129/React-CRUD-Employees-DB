@@ -1,11 +1,12 @@
+// Npm Modules
 import React, { Component } from "react";
 import propTypes from "prop-types";
-
+import axios from "axios";
 import Modal from "react-awesome-modal";
 
-import axios from "axios";
-
+// Local css imports
 import "./AddEmployeeModal.css";
+
 class AddEmployeeModal extends Component {
   state = {
     id: "",
