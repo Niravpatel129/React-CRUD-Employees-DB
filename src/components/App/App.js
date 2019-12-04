@@ -1,13 +1,17 @@
+// Npm Modules
 import React from "react";
-import "./App.css";
+import swal from "sweetalert";
+import { css } from "emotion";
 
+// Local Modules
 import EmployeesTable from "../EmployeesTable/EmployeesTable";
 import NightModeSwitch from "../NightModeSwitch/NightModeSwitch";
 
-import apiURL from "./helpers/apiUrlGetter";
+// Local css imports
+import "./App.css";
 
-import swal from "sweetalert";
-import { css } from "emotion";
+// Assets
+import apiURL from "./helpers/apiUrlGetter";
 
 class App extends React.Component {
   theme = JSON.parse(localStorage.getItem("theme"));

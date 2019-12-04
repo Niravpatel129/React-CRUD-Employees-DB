@@ -1,19 +1,21 @@
+// Npm Modules
 import React, { PureComponent } from "react";
 import propTypes from "prop-types";
-
-import "./EmployeesTable.css";
-import "react-table/react-table.css";
-
 import axios from "axios";
 import ReactTable from "react-table";
 
+// Local Modules
 import AddEmployeeButton from "../AddEmployeeButton/AddEmployeeButton";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import UpdateEmployeeModal from "../UpdateEmployeeModal/UpdateEmployeeModal";
 
-import { colorCheckerHelper } from "./helpers/colorCheckerHelper";
+// Local css imports
+import "./EmployeesTable.css";
+import "react-table/react-table.css";
 
-let zippi = new Audio("http://limonte.github.io/mp3/zippi.mp3");
+// Assets
+import { colorCheckerHelper } from "./helpers/colorCheckerHelper";
+const zippi = new Audio("https://limonte.github.io/mp3/zippi.mp3");
 
 class EmployeesTable extends PureComponent {
   state = {
