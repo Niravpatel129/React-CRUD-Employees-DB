@@ -1,7 +1,7 @@
 // Npm Modules
 import React, { Component } from "react";
-import propTypes from "prop-types";
 import axios from "axios";
+import propTypes from "prop-types";
 import Modal from "react-awesome-modal";
 
 // Local css imports
@@ -26,27 +26,24 @@ class AddEmployeeModal extends Component {
     this.props.closeModal();
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    axios
-      .post(this.props.apiURL + "/api/addEmployee", {
-        id: this.state.id,
-        name: this.state.name,
-        code: this.state.code,
-        profession: this.state.profession,
-        city: this.state.city,
-        branch: this.state.branch,
-        color: this.state.color,
-        assigned: true
-      })
-      .then(() => {
-        console.log("added!");
-        setTimeout(() => {
-          this.props.closeModal();
-          this.props.globalAlerts("Added!");
-          this.props.getEmployees();
-        }, 50);
-      });
+    await axios.post(this.props.apiURL + "/api/addEmployee", {
+      id: this.state.id,
+      name: this.state.name,
+      code: this.state.code,
+      profession: this.state.profession,
+      city: this.state.city,
+      branch: this.state.branch,
+      color: this.state.color,
+      assigned: true
+    });
+
+    setTimeout(() => {
+      this.props.getEmployees();
+      this.props.globalAlerts("Added!");
+      this.props.closeModal();
+    }, 50);
   };
 
   renderInputs = () => {

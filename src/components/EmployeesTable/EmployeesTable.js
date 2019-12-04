@@ -26,7 +26,6 @@ class EmployeesTable extends PureComponent {
   };
 
   componentDidMount = () => {
-    // get data when component is mounted
     this.getEmployees();
   };
 

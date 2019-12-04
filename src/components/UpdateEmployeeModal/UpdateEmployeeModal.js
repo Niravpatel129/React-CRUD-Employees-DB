@@ -36,28 +36,25 @@ class UpdateEmployeeModal extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = async event => {
     event.preventDefault();
-    axios
-      .put(this.props.apiURL + "/api/updateEmployee", {
-        _id: this.state._id, // hidden primary key
-        id: this.state.id,
-        name: this.state.name,
-        code: this.state.code,
-        profession: this.state.profession,
-        city: this.state.city,
-        branch: this.state.branch,
-        color: this.state.color,
-        assigned: true
-      })
-      .then(() => {
-        setTimeout(() => {
-          this.props.globalAlerts("Updated!");
-          this.props.getEmployees();
-        }, 70);
-      });
+    await axios.put(this.props.apiURL + "/api/updateEmployee", {
+      _id: this.state._id, // hidden primary key
+      id: this.state.id,
+      name: this.state.name,
+      code: this.state.code,
+      profession: this.state.profession,
+      city: this.state.city,
+      branch: this.state.branch,
+      color: this.state.color,
+      assigned: true
+    });
 
-    this.closeModal();
+    setTimeout(() => {
+      this.props.globalAlerts("Updated!");
+      this.props.getEmployees();
+      this.closeModal();
+    }, 70);
   };
 
   renderInputs = () => {

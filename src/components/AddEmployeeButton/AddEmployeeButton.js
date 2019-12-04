@@ -1,19 +1,14 @@
 // Npm Modules
-
-// Local Modules
-
-// Local css imports
-
-// Assets
-
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import propTypes from "prop-types";
 
+// Local Modules
 import AddEmployeeModal from "../AddEmployeeModal/AddEmployeeModal";
 
+// Local css imports
 import "./AddEmployeeButton.css";
 
-class AddEmployeeButton extends Component {
+class AddEmployeeButton extends PureComponent {
   state = { visible: false };
 
   shouldModalShow() {
