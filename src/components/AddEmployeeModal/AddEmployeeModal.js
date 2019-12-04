@@ -28,7 +28,7 @@ class AddEmployeeModal extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    await axios.post(this.props.apiURL + "/api/addEmployee", {
+    await axios.post(this.props.apiURL("/api/addEmployee"), {
       id: this.state.id,
       name: this.state.name,
       code: this.state.code,

@@ -31,7 +31,7 @@ class EmployeesTable extends PureComponent {
 
   getEmployees = async () => {
     //
-    let res = await axios.get(this.props.apiURL + "/api/employees");
+    let res = await axios.get(this.props.apiURL("/api/employees"));
     this.setState({
       employees: res.data,
       show: false,
@@ -122,7 +122,7 @@ class EmployeesTable extends PureComponent {
               onClick={val => {
                 val.stopPropagation();
                 axios
-                  .delete(this.props.apiURL + "/api/deleteEmployee", {
+                  .delete(this.props.apiURL("/api/deleteEmployee"), {
                     params: { employeeId: props.original._id }
                   })
                   .then(response => {
@@ -167,7 +167,7 @@ class EmployeesTable extends PureComponent {
                   e.preventDefault();
                   let toEnableOrDisable = !rowInfo.original.assigned;
                   axios
-                    .put(this.props.apiURL + "/api/toggleAssigned", {
+                    .put(this.props.apiURL("/api/toggleAssigned"), {
                       _id: rowInfo.original._id,
                       toEnableOrDisable: toEnableOrDisable
                     })

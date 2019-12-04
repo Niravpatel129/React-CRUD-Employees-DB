@@ -38,7 +38,7 @@ class UpdateEmployeeModal extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    await axios.put(this.props.apiURL + "/api/updateEmployee", {
+    await axios.put(this.props.apiURL("/api/updateEmployee"), {
       _id: this.state._id, // hidden primary key
       id: this.state.id,
       name: this.state.name,
