@@ -27,7 +27,6 @@ class AddEmployeeModal extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    console.log(this.props.apiURL);
     axios
       .post(this.props.apiURL + "/api/addEmployee", {
         id: this.state.id,
@@ -49,70 +48,29 @@ class AddEmployeeModal extends Component {
       });
   };
 
+  renderInputs = () => {
+    let keys = ["id", "name", "code", "profession", "city", "branch", "color"];
+
+    return keys.map(key => (
+      <div className="shareholder" key={key}>
+        <input
+          type={key === "id" ? "number" : "text"}
+          placeholder={key}
+          name={key}
+          value={this.state[key]}
+          onChange={this.handleInputChange}
+        />
+      </div>
+    ));
+  };
+
   render() {
     return (
       <section>
         <Modal visible={true} onClickAway={() => this.closeModal()}>
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
-              <fieldset>
-                <input
-                  type="number"
-                  name="id"
-                  onChange={this.handleInputChange}
-                  value={this.state.id}
-                  placeholder="id"
-                  required
-                />
-                <input
-                  type="text"
-                  name="name"
-                  onChange={this.handleInputChange}
-                  value={this.state.name}
-                  placeholder="name"
-                  required
-                />
-                <input
-                  type="text"
-                  name="code"
-                  onChange={this.handleInputChange}
-                  value={this.state.code}
-                  placeholder="code"
-                  required
-                />
-                <input
-                  type="text"
-                  name="profession"
-                  onChange={this.handleInputChange}
-                  value={this.state.profession}
-                  placeholder="profession"
-                  required
-                />
-                <input
-                  type="text"
-                  name="city"
-                  onChange={this.handleInputChange}
-                  value={this.state.city}
-                  placeholder="city"
-                  required
-                />
-                <input
-                  type="text"
-                  name="branch"
-                  onChange={this.handleInputChange}
-                  value={this.state.branch}
-                  placeholder="branch"
-                  required
-                />
-                <input
-                  type="text"
-                  name="color"
-                  onChange={this.handleInputChange}
-                  value={this.state.color}
-                  placeholder="color"
-                  required
-                />
-              </fieldset>
+              <fieldset>{this.renderInputs()}</fieldset>
               <input
                 type="submit"
                 name="Submit"

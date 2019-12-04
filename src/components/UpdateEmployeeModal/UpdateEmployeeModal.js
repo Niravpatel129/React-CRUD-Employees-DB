@@ -8,75 +8,24 @@ import "./UpdateEmployeeModal.css";
 import axios from "axios";
 
 class UpdateEmployeeModal extends Component {
-  constructor(props) {
-    super(props);
-    // destructing from props and setting it to state
-    const {
-      _id,
-      id,
-      name,
-      code,
-      profession,
-      city,
-      branch,
-      color
-    } = this.props.data;
-
-    this.state = {
-      visible: false,
-      _id,
-      id,
-      name,
-      code,
-      profession,
-      city,
-      branch,
-      color
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ visible: this.props.visible });
-    this.id = this.props.data.id;
-  }
+  state = {
+    visible: this.props.visible,
+    _id: this.props.data._id,
+    id: this.props.data.id,
+    name: this.props.data.name,
+    code: this.props.data.code,
+    profession: this.props.data.profession,
+    city: this.props.data.city,
+    branch: this.props.data.branch,
+    color: this.props.data.color
+  };
 
   closeModal() {
     this.props.toggleUpdateModal();
   }
 
-  handleIdChange = event => {
-    this.setState({ id: event.target.value });
-    this.id = event.target.value;
-  };
-
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-    this.name = event.target.value;
-  };
-
-  handleCodeChange = event => {
-    this.setState({ code: event.target.value });
-    this.code = event.target.value;
-  };
-
-  handleProfessionChange = event => {
-    this.setState({ profession: event.target.value });
-    this.profession = event.target.value;
-  };
-
-  handleCityChange = event => {
-    this.setState({ city: event.target.value });
-    this.city = event.target.value;
-  };
-
-  handleBranchChange = event => {
-    this.setState({ branch: event.target.value });
-    this.branch = event.target.value;
-  };
-
-  handleColorChange = event => {
-    this.setState({ color: event.target.value });
-    this.color = event.target.value;
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   handleSubmit = event => {
@@ -103,67 +52,29 @@ class UpdateEmployeeModal extends Component {
     this.closeModal();
   };
 
+  renderInputs = () => {
+    let keys = ["id", "name", "code", "profession", "city", "branch", "color"];
+
+    return keys.map(key => (
+      <div className="shareholder" key={key}>
+        <input
+          type={key === "id" ? "number" : "text"}
+          placeholder={key}
+          name={key}
+          value={this.state[key]}
+          onChange={this.handleInputChange}
+        />
+      </div>
+    ));
+  };
+
   render() {
     return (
       <section>
-        <Modal
-          visible={true}
-          effect="fadeInUp"
-          onClickAway={() => this.closeModal()}
-        >
+        <Modal visible={true} onClickAway={() => this.closeModal()}>
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
-              <fieldset>
-                <input
-                  type="number"
-                  name="id"
-                  onChange={this.handleIdChange}
-                  value={this.state.id}
-                  required
-                />
-                <input
-                  type="text"
-                  name="name"
-                  onChange={this.handleNameChange}
-                  value={this.state.name}
-                  required
-                />
-                <input
-                  type="text"
-                  name="code"
-                  onChange={this.handleCodeChange}
-                  value={this.state.code}
-                  required
-                />
-                <input
-                  type="text"
-                  name="profession"
-                  onChange={this.handleProfessionChange}
-                  value={this.state.profession}
-                  required
-                />
-                <input
-                  type="text"
-                  name="city"
-                  onChange={this.handleCityChange}
-                  value={this.state.city}
-                  required
-                />
-                <input
-                  type="text"
-                  name="branch"
-                  onChange={this.handleBranchChange}
-                  value={this.state.branch}
-                  required
-                />
-                <input
-                  type="text"
-                  name="color"
-                  onChange={this.handleColorChange}
-                  value={this.state.color}
-                  required
-                />
-              </fieldset>
+              <fieldset>{this.renderInputs()}</fieldset>
               <input
                 type="submit"
                 name="next"
