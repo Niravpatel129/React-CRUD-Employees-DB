@@ -29,6 +29,7 @@ class App extends React.Component {
     const isWhiteMode = this.flipflopValue;
     localStorage.setItem("theme", isWhiteMode);
 
+    // :REDFLAG: do not target the DOM directly, but this is the best way for Dark Theme
     document.documentElement.style.background = isWhiteMode ? "#222222" : "";
     this.setState({
       component: css({
