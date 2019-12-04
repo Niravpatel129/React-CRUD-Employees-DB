@@ -4,28 +4,15 @@ import "./App.css";
 import EmployeesTable from "./components/EmployeesTable/EmployeesTable";
 import NightModeSwitch from "./components/NightModeSwitch/NightModeSwitch";
 
+import apiURL from "./helpers/apiUrlGetter";
+
 import swal from "sweetalert";
 import { css } from "emotion";
 
 class App extends React.Component {
-  constructor() {
-    super();
-
-    let theme = JSON.parse(localStorage.getItem("theme"));
-
-    this.state = { darkMode: theme, component: "" };
-    this.flipflopValue = this.state.darkMode;
-
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-      // dev code
-      this.apiURL = "http://localhost:8080";
-      console.log("dev environment");
-    } else {
-      // production code
-      this.apiURL = "https://backend-api-crud-app.herokuapp.com";
-      console.log("production environment");
-    }
-  }
+  theme = JSON.parse(localStorage.getItem("theme"));
+  state = { darkMode: this.theme, component: "" };
+  flipflopValue = this.state.darkMode;
 
   componentDidMount() {
     // this should update based on localStorage (browserStorage)
@@ -70,7 +57,7 @@ class App extends React.Component {
           triggerThemeSwap={this.triggerThemeSwap}
           theme={this.state.darkMode}
         />
-        <EmployeesTable globalAlerts={this.globalAlerts} apiURL={this.apiURL} />
+        <EmployeesTable globalAlerts={this.globalAlerts} apiURL={apiURL} />
       </div>
     );
   }
