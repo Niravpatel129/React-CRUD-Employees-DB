@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 
-import EmployeesTable from "./components/EmployeesTable/EmployeesTable";
-import NightModeSwitch from "./components/NightModeSwitch/NightModeSwitch";
+import EmployeesTable from "../EmployeesTable/EmployeesTable";
+import NightModeSwitch from "../NightModeSwitch/NightModeSwitch";
 
 import apiURL from "./helpers/apiUrlGetter";
 
@@ -11,8 +11,8 @@ import { css } from "emotion";
 
 class App extends React.Component {
   theme = JSON.parse(localStorage.getItem("theme"));
-  state = { darkMode: this.theme, component: "" };
-  flipflopValue = this.state.darkMode;
+  state = { theme: this.theme, component: "" };
+  flipflopValue = this.state.theme;
 
   componentDidMount() {
     // this should update based on localStorage (browserStorage)
@@ -56,7 +56,7 @@ class App extends React.Component {
         <h1>Plexxis Employees</h1>
         <NightModeSwitch
           triggerThemeSwap={this.triggerThemeSwap}
-          theme={this.state.darkMode}
+          theme={this.state.theme}
         />
         <EmployeesTable globalAlerts={this.globalAlerts} apiURL={apiURL} />
       </div>
