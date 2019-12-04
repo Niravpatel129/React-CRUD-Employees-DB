@@ -7,15 +7,19 @@ import axios from "axios";
 
 import "./AddEmployeeModal.css";
 class AddEmployeeModal extends Component {
-  // with React, 2 way binding is good too, but this is a alternative. !! Future convert this to react hooks !!
+  state = {
+    id: "",
+    name: "",
+    code: "",
+    profession: "",
+    city: "",
+    branch: "",
+    color: ""
+  };
 
-  handleIdChange = ({ target: { value } }) => (this.id = value);
-  handleNameChange = ({ target: { value } }) => (this.name = value);
-  handleCodeChange = ({ target: { value } }) => (this.code = value);
-  handleProfessionChange = ({ target: { value } }) => (this.profession = value);
-  handleCityChange = ({ target: { value } }) => (this.city = value);
-  handleBranchChange = ({ target: { value } }) => (this.branch = value);
-  handleColorChange = ({ target: { value } }) => (this.color = value);
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   closeModal() {
     this.props.closeModal();
@@ -26,13 +30,13 @@ class AddEmployeeModal extends Component {
     console.log(this.props.apiURL);
     axios
       .post(this.props.apiURL + "/api/addEmployee", {
-        id: this.id,
-        name: this.name,
-        code: this.code,
-        profession: this.profession,
-        city: this.city,
-        branch: this.branch,
-        color: this.color,
+        id: this.state.id,
+        name: this.state.name,
+        code: this.state.code,
+        profession: this.state.profession,
+        city: this.state.city,
+        branch: this.state.branch,
+        color: this.state.color,
         assigned: true
       })
       .then(() => {
@@ -55,56 +59,63 @@ class AddEmployeeModal extends Component {
                 <input
                   type="number"
                   name="id"
-                  onChange={this.handleIdChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.id}
                   placeholder="id"
                   required
                 />
                 <input
                   type="text"
                   name="name"
-                  onChange={this.handleNameChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.name}
                   placeholder="name"
                   required
                 />
                 <input
                   type="text"
                   name="code"
-                  onChange={this.handleCodeChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.code}
                   placeholder="code"
                   required
                 />
                 <input
                   type="text"
                   name="profession"
-                  onChange={this.handleProfessionChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.profession}
                   placeholder="profession"
                   required
                 />
                 <input
                   type="text"
                   name="city"
-                  onChange={this.handleCityChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.city}
                   placeholder="city"
                   required
                 />
                 <input
                   type="text"
                   name="branch"
-                  onChange={this.handleBranchChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.branch}
                   placeholder="branch"
                   required
                 />
                 <input
                   type="text"
                   name="color"
-                  onChange={this.handleColorChange}
+                  onChange={this.handleInputChange}
+                  value={this.state.color}
                   placeholder="color"
                   required
                 />
               </fieldset>
               <input
                 type="submit"
-                name="next"
+                name="Submit"
                 className="next action-button"
                 value="Submit"
                 required
