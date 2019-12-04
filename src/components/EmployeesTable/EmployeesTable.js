@@ -126,7 +126,6 @@ class EmployeesTable extends PureComponent {
                   })
                   .then(response => {
                     setTimeout(() => {
-                      console.log(response);
                       this.props.globalAlerts("Delete Successful");
 
                       this.getEmployees();
