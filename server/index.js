@@ -82,7 +82,7 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
 
     updateEmplyees();
     res.sendStatus(200);
-    console.log(employee.name + " added to the database.");
+    console.log(employee.name + " added to the database!");
   });
 });
 
