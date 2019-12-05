@@ -52,94 +52,95 @@ class EmployeesTable extends PureComponent {
   render() {
     const { employees } = this.state;
 
-    const columns = [
-      {
-        Header: 'ID',
-        accessor: 'id',
-        filterable: true,
-        Filter: ({ filter, onChange }) => (
-          <input
-            onChange={event => onChange(event.target.value)}
-            placeholder="🔍"
-          />
-        ),
-      },
-      {
-        Header: 'Name',
-        accessor: 'name',
-      },
-      {
-        Header: 'Code',
-        accessor: 'code',
-      },
-      {
-        Header: 'Profession',
-        accessor: 'profession',
-      },
-      {
-        Header: 'City',
-        accessor: 'city',
-      },
-      {
-        Header: 'Branch',
-        accessor: 'branch',
-      },
-      {
-        Header: 'Assigned',
-        accessor: 'assigned',
-        Cell: props => (props.original.assigned ? 'Yes' : 'No'),
-      },
-      {
-        Header: 'Colour',
-        accessor: 'color',
-        Cell: props => {
-          let color = props.original.color;
-          if (!colorCheckerHelper(color)) {
-            color = 'white'; // default color for invalid arguments
-          }
-          return (
-            <div
-              className="colorCol"
-              style={{
-                width: '100%',
-                height: '100%',
-                backgroundColor: color,
-                borderRadius: '2px',
-              }}
-            ></div>
-          );
-        },
-      },
-      {
-        Header: 'Actions',
-        accessor: null,
-        Cell: props => {
-          return (
-            <button
-              onClick={val => {
-                val.stopPropagation();
-                axios
-                  .delete(this.props.apiURL('/api/deleteEmployee'), {
-                    params: { employeeId: props.original._id },
-                  })
-                  .then(response => {
-                    setTimeout(() => {
-                      this.props.globalAlerts('Delete Successful');
-
-                      this.getEmployees();
-                    }, 120);
-                  });
-              }}
-              className="actionButtonDelete"
-            >
-              <span alt="delete" role="img" aria-label="delete">
-                🗑️
-              </span>
-            </button>
-          );
-        },
-      },
+    let keys = [
+      'id',
+      'name',
+      'code',
+      'profession',
+      'city',
+      'branch',
+      'assigned',
+      'color',
+      'actions',
     ];
+
+    const Columns = keys.map(key => {
+      const upperCasedFirstLetter =
+        key.charAt(0).toUpperCase() + key.substring(1);
+      let returnValue = {
+        Header: upperCasedFirstLetter,
+        accessor: key,
+      };
+
+      switch (key) {
+        case 'id':
+          returnValue.filterable = true;
+          returnValue.Filter = ({ onChange }) => (
+            <input
+              onChange={event => onChange(event.target.value)}
+              placeholder="🔍"
+            />
+          );
+          break;
+
+        case 'assigned':
+          returnValue.Cell = props => (props.original.assigned ? 'Yes' : 'No');
+          break;
+
+        case 'color':
+          returnValue.Cell = props => {
+            let color = props.original.color;
+            if (!colorCheckerHelper(color)) {
+              color = 'white'; // default color for invalid arguments
+            }
+            return (
+              <div
+                className="colorCol"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  backgroundColor: color,
+                  borderRadius: '2px',
+                }}
+              ></div>
+            );
+          };
+          break;
+
+        case 'actions':
+          returnValue.Cell = props => {
+            return (
+              <button
+                onClick={val => {
+                  val.stopPropagation();
+                  axios
+                    .delete(this.props.apiURL('/api/deleteEmployee'), {
+                      params: { employeeId: props.original._id },
+                    })
+                    .then(response => {
+                      setTimeout(() => {
+                        this.props.globalAlerts('Delete Successful');
+
+                        this.getEmployees();
+                      }, 100);
+                    });
+                }}
+                className="actionButtonDelete"
+              >
+                <span alt="delete" role="img" aria-label="delete">
+                  🗑️
+                </span>
+              </button>
+            );
+          };
+          break;
+
+        default:
+          break;
+      }
+
+      return returnValue;
+    });
 
     if (this.state.dataLoaded) {
       return (
@@ -147,7 +148,7 @@ class EmployeesTable extends PureComponent {
           <ReactTable
             className="table"
             data={employees}
-            columns={columns}
+            columns={Columns}
             getTdProps={(state, rowInfo, column, instance) => {
               return {
                 onClick: e => {
