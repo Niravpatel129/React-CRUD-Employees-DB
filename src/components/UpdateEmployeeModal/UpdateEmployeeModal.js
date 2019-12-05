@@ -58,7 +58,15 @@ class UpdateEmployeeModal extends Component {
   };
 
   renderInputs = () => {
-    let keys = ["id", "name", "code", "profession", "city", "branch", "color"];
+    const keys = [
+      "id",
+      "name",
+      "code",
+      "profession",
+      "city",
+      "branch",
+      "color"
+    ];
 
     return keys.map(key => (
       <div className="shareholder" key={key}>

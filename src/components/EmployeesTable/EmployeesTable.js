@@ -31,7 +31,7 @@ class EmployeesTable extends PureComponent {
 
   getEmployees = async () => {
     //
-    let res = await axios.get(this.props.apiURL("/api/employees"));
+    const res = await axios.get(this.props.apiURL("/api/employees"));
     this.setState({
       employees: res.data,
       show: false,
@@ -88,8 +88,7 @@ class EmployeesTable extends PureComponent {
         Header: "Assigned",
         accessor: "assigned",
         Cell: props => {
-          let asignedValue = props.original.assigned;
-          return asignedValue ? "Yes" : "No";
+          return props.original.assigned ? "Yes" : "No";
         }
       },
       {
@@ -165,11 +164,10 @@ class EmployeesTable extends PureComponent {
                 },
                 onContextMenu: e => {
                   e.preventDefault();
-                  let toEnableOrDisable = !rowInfo.original.assigned;
                   axios
                     .put(this.props.apiURL("/api/toggleAssigned"), {
                       _id: rowInfo.original._id,
-                      toEnableOrDisable: toEnableOrDisable
+                      toEnableOrDisable: !rowInfo.original.assigned
                     })
                     .then(res => {
                       setTimeout(() => {

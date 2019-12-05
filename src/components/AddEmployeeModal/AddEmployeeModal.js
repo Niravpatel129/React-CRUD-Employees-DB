@@ -22,9 +22,9 @@ class AddEmployeeModal extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  closeModal() {
+  closeModal = () => {
     this.props.closeModal();
-  }
+  };
 
   handleSubmit = async e => {
     e.preventDefault();
@@ -47,7 +47,15 @@ class AddEmployeeModal extends Component {
   };
 
   renderInputs = () => {
-    let keys = ["id", "name", "code", "profession", "city", "branch", "color"];
+    const keys = [
+      "id",
+      "name",
+      "code",
+      "profession",
+      "city",
+      "branch",
+      "color"
+    ];
 
     return keys.map(key => (
       <div className="shareholder" key={key}>
@@ -65,7 +73,7 @@ class AddEmployeeModal extends Component {
   render() {
     return (
       <section>
-        <Modal visible={true} onClickAway={() => this.closeModal()}>
+        <Modal visible={true} onClickAway={this.closeModal}>
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>{this.renderInputs()}</fieldset>
