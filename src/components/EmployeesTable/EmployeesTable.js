@@ -87,9 +87,7 @@ class EmployeesTable extends PureComponent {
       {
         Header: "Assigned",
         accessor: "assigned",
-        Cell: props => {
-          return props.original.assigned ? "Yes" : "No";
-        }
+        Cell: props => (props.original.assigned ? "Yes" : "No")
       },
       {
         Header: "Colour",
@@ -196,10 +194,8 @@ class EmployeesTable extends PureComponent {
           )}
         </div>
       );
-    } else {
-      // display loading spinner while data is loading
-      return <LoadingSpinner />;
     }
+    return <LoadingSpinner />;
   }
 }
 
