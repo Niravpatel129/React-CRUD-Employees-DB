@@ -9,8 +9,7 @@ router.use(cors());
 
 const corsOptions = {
   origin: "http://localhost:3000",
-  optionsSuccessStatus: 200,
-  header: ("Access-Control-Allow-Origin", "*")
+  optionsSuccessStatus: 200
 };
 
 let employeess;
