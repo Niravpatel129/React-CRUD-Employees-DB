@@ -19,7 +19,6 @@ class App extends React.Component {
   flipflopValue = this.state.theme;
 
   componentDidMount() {
-    // this should update based on localStorage (browserStorage)
     this.triggerThemeSwap();
   }
 
