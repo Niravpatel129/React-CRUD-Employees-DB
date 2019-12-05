@@ -1,0 +1,11 @@
+#msform .action-button {
+  background-color: cornflowerblue;
+  width: 130px;
+  height: 50px;
+  border-radius: 20px;
+}
+
+#msform input,
+#msform textarea {
+  background-color: ghostwhite;
+}
