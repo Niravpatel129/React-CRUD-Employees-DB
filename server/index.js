@@ -3,7 +3,6 @@ const cors = require("cors");
 const app = express();
 
 const mongoose = require("mongoose");
-let Schema = mongoose.Schema;
 mongoose.set("useFindAndModify", false);
 
 const mongooseSetup = require("./mongooseSetup/mongooseSetup.js");
@@ -11,9 +10,9 @@ const employeeSchemaTemplate = require("./Schemas/employees");
 
 mongooseSetup();
 
-let employeeSchema = employeeSchemaTemplate();
+const employeeSchema = employeeSchemaTemplate();
 
-let EmployeesDataBase = mongoose.model("employees", employeeSchema);
+const EmployeesDataBase = mongoose.model("employees", employeeSchema);
 let employeess;
 
 function updateEmplyees() {
@@ -33,7 +32,7 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-let corsOptions = {
+const corsOptions = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200
 };
@@ -65,8 +64,8 @@ app.delete("/api/deleteEmployee", cors(corsOptions), (req, res, next) => {
 app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
 
-  let employeeInfo = req.body;
-  let newEmployee = new EmployeesDataBase({
+  const employeeInfo = req.body;
+  const newEmployee = new EmployeesDataBase({
     id: employeeInfo.id,
     name: employeeInfo.name,
     code: employeeInfo.code,
@@ -88,7 +87,7 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
 
 app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  let employeeInfo = req.body;
+  const employeeInfo = req.body;
 
   EmployeesDataBase.findByIdAndUpdate(
     { _id: employeeInfo._id },
@@ -117,7 +116,7 @@ app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
 
 app.put("/api/toggleAssigned", cors(corsOptions), (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  let employeeInfo = req.body;
+  const employeeInfo = req.body;
   EmployeesDataBase.findByIdAndUpdate(
     { _id: employeeInfo._id },
     {
