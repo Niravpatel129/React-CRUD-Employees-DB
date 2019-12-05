@@ -6,13 +6,12 @@ const mongoose = require("mongoose");
 mongoose.set("useFindAndModify", false);
 
 const mongooseSetup = require("./mongooseSetup/mongooseSetup.js");
-const employeeSchemaTemplate = require("./Schemas/employees");
+const employeeSchemaTemplate = require("./Models/employees.model");
 
 mongooseSetup();
 
-const employeeSchema = employeeSchemaTemplate();
+const EmployeesDataBase = employeeSchemaTemplate;
 
-const EmployeesDataBase = mongoose.model("employees", employeeSchema);
 let employeess;
 
 function updateEmplyees() {
