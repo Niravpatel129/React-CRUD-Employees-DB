@@ -35,7 +35,7 @@ app.use(express.json());
 const corsOptions = {
   origin: "http://localhost:3000",
   optionsSuccessStatus: 200,
-  setHeader: ("Access-Control-Allow-Origin", "*")
+  "Access-Control-Allow-Origin": "*"
 };
 
 app.get("/api/employees", cors(corsOptions), (req, res, next) => {
