@@ -6,14 +6,14 @@
 
 // Assets
 
-import React, { Component } from "react";
-import propTypes from "prop-types";
+import React, { Component } from 'react';
+import propTypes from 'prop-types';
 
-import Modal from "react-awesome-modal";
+import Modal from 'react-awesome-modal';
 
-import "./UpdateEmployeeModal.css";
+import './UpdateEmployeeModal.css';
 
-import axios from "axios";
+import axios from 'axios';
 
 class UpdateEmployeeModal extends Component {
   state = {
@@ -25,7 +25,7 @@ class UpdateEmployeeModal extends Component {
     profession: this.props.data.profession,
     city: this.props.data.city,
     branch: this.props.data.branch,
-    color: this.props.data.color
+    color: this.props.data.color,
   };
 
   closeModal() {
@@ -38,7 +38,7 @@ class UpdateEmployeeModal extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    await axios.put(this.props.apiURL("/api/updateEmployee"), {
+    await axios.put(this.props.apiURL('/api/updateEmployee'), {
       _id: this.state._id, // hidden primary key
       id: this.state.id,
       name: this.state.name,
@@ -47,11 +47,11 @@ class UpdateEmployeeModal extends Component {
       city: this.state.city,
       branch: this.state.branch,
       color: this.state.color,
-      assigned: true
+      assigned: true,
     });
 
     setTimeout(() => {
-      this.props.globalAlerts("Updated!");
+      this.props.globalAlerts('Updated!');
       this.props.getEmployees();
       this.closeModal();
     }, 70);
@@ -59,19 +59,19 @@ class UpdateEmployeeModal extends Component {
 
   renderInputs = () => {
     const keys = [
-      "id",
-      "name",
-      "code",
-      "profession",
-      "city",
-      "branch",
-      "color"
+      'id',
+      'name',
+      'code',
+      'profession',
+      'city',
+      'branch',
+      'color',
     ];
 
     return keys.map(key => (
       <div className="shareholder" key={key}>
         <input
-          type={key === "id" ? "number" : "text"}
+          type={key === 'id' ? 'number' : 'text'}
           placeholder={key}
           name={key}
           value={this.state[key]}
@@ -94,7 +94,7 @@ class UpdateEmployeeModal extends Component {
                 className="next action-button"
                 value="Update"
                 required
-              />{" "}
+              />{' '}
             </form>
           </div>
         </Modal>
@@ -107,7 +107,7 @@ UpdateEmployeeModal.propTypes = {
   data: propTypes.object,
   toggleUpdateModal: propTypes.func,
   globalAlerts: propTypes.func,
-  getEmployees: propTypes.func
+  getEmployees: propTypes.func,
 };
 
 export default UpdateEmployeeModal;

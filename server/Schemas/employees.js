@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 let Schema = mongoose.Schema;
 
-module.exports = function employeeSchema() {
-  let employeeSchema = new Schema({
+module.exports = () =>
+  new Schema({
     id: Number,
     name: String,
     code: String,
@@ -12,5 +12,3 @@ module.exports = function employeeSchema() {
     branch: String,
     assigned: Boolean
   });
-  return employeeSchema;
-};

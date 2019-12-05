@@ -1,12 +1,12 @@
 // Npm Modules
-import React, { PureComponent } from "react";
-import propTypes from "prop-types";
+import React, { PureComponent } from 'react';
+import propTypes from 'prop-types';
 
 // Local Modules
-import AddEmployeeModal from "../AddEmployeeModal/AddEmployeeModal";
+import AddEmployeeModal from '../AddEmployeeModal/AddEmployeeModal';
 
 // Local css imports
-import "./AddEmployeeButton.css";
+import './AddEmployeeButton.css';
 
 class AddEmployeeButton extends PureComponent {
   state = { visible: false };
@@ -44,7 +44,7 @@ class AddEmployeeButton extends PureComponent {
 AddEmployeeButton.propTypes = {
   globalAlerts: propTypes.func,
   playSouds: propTypes.func,
-  getEmployees: propTypes.func
+  getEmployees: propTypes.func,
 };
 
 export default AddEmployeeButton;
