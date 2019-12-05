@@ -65,6 +65,7 @@ class AddEmployeeModal extends Component {
           name={key}
           value={this.state[key]}
           onChange={this.handleInputChange}
+          required
         />
       </div>
     ));
