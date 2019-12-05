@@ -1,2 +1,0 @@
-[Ordered Oldest to Latest]
-    -Created a new component employees and moved all the data to it

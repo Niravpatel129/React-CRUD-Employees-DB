@@ -1,19 +1,11 @@
 // Npm Modules
-
-// Local Modules
-
-// Local css imports
-
-// Assets
-
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
-
 import Modal from 'react-awesome-modal';
-
-import './UpdateEmployeeModal.css';
-
 import axios from 'axios';
+
+// Local css imports
+import './UpdateEmployeeModal.css';
 
 class UpdateEmployeeModal extends Component {
   state = {
