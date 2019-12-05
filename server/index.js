@@ -34,36 +34,27 @@ app.use(express.json());
 
 const corsOptions = {
   origin: "http://localhost:3000",
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
+  setHeader: ("Access-Control-Allow-Origin", "*")
 };
 
 app.get("/api/employees", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
   res.status(200);
   res.send(JSON.stringify(employeess, null, 2));
 });
 
 app.delete("/api/deleteEmployee", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   let employeeID = req.query.employeeId;
 
-  EmployeesDataBase.deleteOne(
-    {
-      _id: employeeID
-    },
-    function(err) {
-      if (err) return handleError(err);
-    }
-  ).then(() => {
+  EmployeesDataBase.deleteOne({
+    _id: employeeID
+  }).then(() => {
     updateEmplyees();
     res.sendStatus(200);
   });
 });
 
 app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-
   const employeeInfo = req.body;
   const newEmployee = new EmployeesDataBase({
     id: employeeInfo.id,
@@ -86,7 +77,6 @@ app.post("/api/addEmployee", cors(corsOptions), (req, res, next) => {
 });
 
 app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
   const employeeInfo = req.body;
 
   EmployeesDataBase.findByIdAndUpdate(
@@ -115,8 +105,8 @@ app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
 });
 
 app.put("/api/toggleAssigned", cors(corsOptions), (req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
   const employeeInfo = req.body;
+
   EmployeesDataBase.findByIdAndUpdate(
     { _id: employeeInfo._id },
     {

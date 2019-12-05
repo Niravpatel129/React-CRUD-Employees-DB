@@ -1,8 +1,8 @@
 // Npm Modules
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 // Local css imports
-import "./NightModeSwitch.css";
+import './NightModeSwitch.css';
 
 class NightModeSwitch extends Component {
   handleDarkSwitch = () => {
