@@ -34,8 +34,7 @@ app.use(express.json());
 
 const corsOptions = {
   origin: "http://localhost:3000",
-  optionsSuccessStatus: 200,
-  "Access-Control-Allow-Origin": "*"
+  optionsSuccessStatus: 200
 };
 
 app.get("/api/employees", cors(corsOptions), (req, res, next) => {
@@ -96,7 +95,6 @@ app.put("/api/updateEmployee", cors(corsOptions), (req, res, next) => {
   )
     .then(data => {
       updateEmplyees();
-
       res.sendStatus(200);
     })
     .catch(err => {

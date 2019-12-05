@@ -30,7 +30,7 @@ class UpdateEmployeeModal extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
-    await axios.put(this.props.apiURL('/api/updateEmployee'), {
+    const res = await axios.put(this.props.apiURL('/api/updateEmployee'), {
       _id: this.state._id, // hidden primary key
       id: this.state.id,
       name: this.state.name,
@@ -43,9 +43,14 @@ class UpdateEmployeeModal extends Component {
     });
 
     setTimeout(() => {
-      this.props.globalAlerts('Updated!');
-      this.props.getEmployees();
-      this.closeModal();
+      if (res.status === 200) {
+        this.props.globalAlerts('Updated!');
+        this.props.getEmployees();
+        this.closeModal();
+      } else {
+        this.props.globalAlerts('Error Occured!!');
+        this.closeModal();
+      }
     }, 70);
   };
 

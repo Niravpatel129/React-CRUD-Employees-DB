@@ -127,7 +127,7 @@ class EmployeesTable extends PureComponent {
                       this.props.globalAlerts('Delete Successful');
 
                       this.getEmployees();
-                    }, 100);
+                    }, 120);
                   });
               }}
               className="actionButtonDelete"
