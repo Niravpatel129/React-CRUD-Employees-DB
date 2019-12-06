@@ -5,9 +5,9 @@ import propTypes from 'prop-types';
 import Modal from 'react-awesome-modal';
 
 // Local css imports
-import './AddEmployeeModal.css';
+import './AddEmployeeFormModal.css';
 
-class AddEmployeeModal extends Component {
+class AddEmployeeFormModal extends Component {
   state = {
     id: '',
     name: '',
@@ -93,10 +93,10 @@ class AddEmployeeModal extends Component {
   }
 }
 
-AddEmployeeModal.propTypes = {
+AddEmployeeFormModal.propTypes = {
   closeModal: propTypes.func,
   getEmployees: propTypes.func,
   globalAlerts: propTypes.func,
 };
 
-export default AddEmployeeModal;
+export default AddEmployeeFormModal;

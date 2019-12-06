@@ -3,7 +3,7 @@ import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
 // Local Modules
-import AddEmployeeModal from '../AddEmployeeModal/AddEmployeeModal';
+import AddEmployeeFormModal from '../AddEmployeeFormModal/AddEmployeeFormModal';
 
 // Local css imports
 import './AddEmployeeButton.css';
@@ -28,7 +28,7 @@ class AddEmployeeButton extends PureComponent {
         </button>
 
         {this.state.visible && (
-          <AddEmployeeModal
+          <AddEmployeeFormModal
             globalAlerts={this.props.globalAlerts}
             visible={this.state.visible}
             closeModal={this.closeModal}
