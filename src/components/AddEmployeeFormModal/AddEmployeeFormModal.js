@@ -60,18 +60,27 @@ class AddEmployeeFormModal extends Component {
       'color',
     ];
 
-    return keys.map(key => (
-      <div key={key}>
-        <input
-          type={key === 'id' ? 'number' : 'text'}
-          placeholder={key}
-          name={key}
-          value={this.state[key]}
-          onChange={this.handleInputChange}
-          required
-        />
-      </div>
-    ));
+    return keys.map(key => {
+      return (
+        <div key={key}>
+          <input
+            type={key === 'id' ? 'number' : 'text'}
+            placeholder={key}
+            name={key}
+            list={key}
+            value={this.state[key]}
+            onChange={this.handleInputChange}
+            required
+          />
+          {key === 'city' && (
+            <datalist id={key}>
+              <option>Brampton</option>
+              <option>Toronto</option>
+            </datalist>
+          )}
+        </div>
+      );
+    });
   };
 
   render() {
