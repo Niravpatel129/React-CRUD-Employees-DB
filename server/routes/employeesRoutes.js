@@ -62,9 +62,14 @@ router.route("/addEmployee").post((req, res) => {
   });
 
   newEmployee.save(function(err, employee) {
-    updateEmplyees();
-    res.sendStatus(200);
-    console.log(employee.name + " added to the database!");
+    if (err) {
+      res.sendStatus(201);
+      res.end();
+    } else {
+      updateEmplyees();
+      res.sendStatus(200);
+      console.log(employee.name + " added to the database!");
+    }
   });
 });
 
@@ -92,7 +97,7 @@ router.route("/updateEmployee").put((req, res, next) => {
       res.sendStatus(200);
     })
     .catch(err => {
-      console.log(err);
+      res.sendStatus(201);
     });
 });
 

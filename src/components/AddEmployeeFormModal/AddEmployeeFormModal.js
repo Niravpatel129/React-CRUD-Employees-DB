@@ -28,7 +28,7 @@ class AddEmployeeFormModal extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    await axios.post(this.props.apiURL('/api/addEmployee'), {
+    let res = await axios.post(this.props.apiURL('/api/addEmployee'), {
       id: this.state.id,
       name: this.state.name,
       code: this.state.code,
@@ -40,10 +40,15 @@ class AddEmployeeFormModal extends Component {
     });
 
     setTimeout(() => {
-      this.props.getEmployees();
-      this.props.globalAlerts('Added!');
-      this.props.closeModal();
-    }, 50);
+      if (res.status === 200) {
+        this.props.globalAlerts('Added!');
+        this.props.getEmployees();
+        this.closeModal();
+      } else {
+        this.props.globalAlerts('You cannot use the same id!!', 'error');
+        this.closeModal();
+      }
+    }, 70);
   };
 
   renderInputs = () => {

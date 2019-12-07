@@ -30,7 +30,6 @@ class EmployeesTable extends PureComponent {
   };
 
   getEmployees = async () => {
-    //
     const res = await axios.get(this.props.apiURL('/api/employees'));
     this.setState({
       employees: res.data,

@@ -43,14 +43,16 @@ class App extends React.Component {
     this.flipflopValue = !this.flipflopValue;
   };
 
-  globalAlerts(message) {
+  globalAlerts(message, error) {
     // passed down to child components to display global messages
-    swal({
-      title: 'Sucess!',
-      text: message,
-      icon: 'success',
-      button: 'Continue!',
-    });
+    error
+      ? swal('Oh noes!', message, 'error')
+      : swal({
+          title: 'Sucess!',
+          text: message,
+          icon: 'success',
+          button: 'Continue!',
+        });
   }
 
   render() {

@@ -48,7 +48,7 @@ class UpdateEmployeeModal extends Component {
         this.props.getEmployees();
         this.closeModal();
       } else {
-        this.props.globalAlerts('Error Occured!!');
+        this.props.globalAlerts('You cannot use the same id!!', 'error');
         this.closeModal();
       }
     }, 70);
