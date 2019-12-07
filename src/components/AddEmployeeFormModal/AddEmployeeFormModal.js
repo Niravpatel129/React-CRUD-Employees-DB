@@ -1,10 +1,8 @@
-// Npm Modules
 import React, { Component } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
 import Modal from 'react-awesome-modal';
 
-// Local css imports
 import './AddEmployeeFormModal.css';
 
 class AddEmployeeFormModal extends Component {

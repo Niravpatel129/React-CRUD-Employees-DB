@@ -1,8 +1,7 @@
-// Npm Modules
 import React, { Component } from 'react';
 
-// Local css imports
 import './NightModeSwitch.css';
+
 const clack = new Audio(
   'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/clack.ogg'
 );

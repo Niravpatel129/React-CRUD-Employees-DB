@@ -1,11 +1,8 @@
-// Npm Modules
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 
-// Local Modules
 import AddEmployeeFormModal from '../AddEmployeeFormModal/AddEmployeeFormModal';
 
-// Local css imports
 import './AddEmployeeButton.css';
 
 class AddEmployeeButton extends PureComponent {

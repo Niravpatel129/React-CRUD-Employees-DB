@@ -1,19 +1,15 @@
-// Npm Modules
 import React, { PureComponent } from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import ReactTable from 'react-table';
 
-// Local Modules
 import AddEmployeeButton from '../AddEmployeeButton/AddEmployeeButton';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import UpdateEmployeeModal from '../UpdateEmployeeModal/UpdateEmployeeModal';
 
-// Local css imports
 import './EmployeesTable.css';
 import 'react-table/react-table.css';
 
-// Assets
 import { colorCheckerHelper } from './helpers/colorCheckerHelper';
 const zippi = new Audio('https://limonte.github.io/mp3/zippi.mp3');
 

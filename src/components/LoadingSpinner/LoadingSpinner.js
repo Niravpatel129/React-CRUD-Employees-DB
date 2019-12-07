@@ -1,7 +1,5 @@
-// Npm Modules
 import React, { PureComponent } from 'react';
 
-// Local css imports
 import './LoadingSpinner.css';
 
 class LoadingSpinner extends PureComponent {

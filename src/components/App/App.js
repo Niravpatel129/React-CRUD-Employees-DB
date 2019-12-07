@@ -1,16 +1,12 @@
-// Npm Modules
 import React from 'react';
 import swal from 'sweetalert';
 import { css } from 'emotion';
 
-// Local Modules
 import EmployeesTable from '../EmployeesTable/EmployeesTable';
 import NightModeSwitch from '../NightModeSwitch/NightModeSwitch';
 
-// Local css imports
 import './App.css';
 
-// Assets
 import apiURL from './helpers/apiUrlGetter';
 
 class App extends React.Component {
