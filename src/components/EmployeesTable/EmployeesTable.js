@@ -47,7 +47,7 @@ class EmployeesTable extends PureComponent {
   render() {
     const { employees } = this.state;
 
-    let keys = [
+    const keys = [
       'id',
       'name',
       'code',
@@ -84,7 +84,7 @@ class EmployeesTable extends PureComponent {
 
         case 'color':
           returnValue.Cell = props => {
-            let color = props.original.color;
+            let { color } = props.original;
             if (!colorCheckerHelper(color)) {
               color = 'white'; // default color for invalid arguments
             }

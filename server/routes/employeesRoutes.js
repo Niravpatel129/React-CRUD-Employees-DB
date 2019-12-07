@@ -36,7 +36,7 @@ router.get("/employees", cors(corsOptions), (req, res, next) => {
 router.delete("/deleteEmployee", cors(corsOptions), (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
 
-  let employeeID = req.query.employeeId;
+  const employeeID = req.query.employeeId;
 
   EmployeesDataBase.deleteOne({
     _id: employeeID
