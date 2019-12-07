@@ -63,7 +63,7 @@ class AddEmployeeFormModal extends Component {
     ];
 
     return keys.map(key => (
-      <div className="shareholder" key={key}>
+      <div key={key}>
         <input
           type={key === 'id' ? 'number' : 'text'}
           placeholder={key}
