@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import Modal from 'react-awesome-modal';
 import axios from 'axios';
 
@@ -100,10 +100,12 @@ class UpdateEmployeeModal extends Component {
 }
 
 UpdateEmployeeModal.propTypes = {
-  data: propTypes.object,
-  toggleUpdateModal: propTypes.func,
-  globalAlerts: propTypes.func,
-  getEmployees: propTypes.func,
+  apiURL: PropTypes.func,
+  data: PropTypes.object,
+  getEmployees: PropTypes.func,
+  globalAlerts: PropTypes.func,
+  toggleUpdateModal: PropTypes.func,
+  visible: PropTypes.bool,
 };
 
 export default UpdateEmployeeModal;

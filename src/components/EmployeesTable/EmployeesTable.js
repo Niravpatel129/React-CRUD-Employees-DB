@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import ReactTable from 'react-table';
 
@@ -180,7 +180,7 @@ class EmployeesTable extends PureComponent {
           <AddEmployeeButton
             globalAlerts={this.props.globalAlerts}
             getEmployees={this.getEmployees}
-            playSouds={this.playSound}
+            playSound={this.playSound}
             apiURL={this.props.apiURL}
           />
           {this.state.showUpdateModal && (
@@ -199,6 +199,9 @@ class EmployeesTable extends PureComponent {
   }
 }
 
-EmployeesTable.propTypes = { globalAlerts: propTypes.func };
+EmployeesTable.PropTypes = {
+  apiURL: PropTypes.func,
+  globalAlerts: PropTypes.func,
+};
 
 export default EmployeesTable;

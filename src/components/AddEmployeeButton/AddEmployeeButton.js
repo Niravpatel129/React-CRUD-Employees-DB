@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import AddEmployeeFormModal from '../AddEmployeeFormModal/AddEmployeeFormModal';
 
@@ -14,7 +14,7 @@ class AddEmployeeButton extends PureComponent {
 
   closeModal = () => {
     this.setState({ visible: false });
-    this.props.playSouds();
+    this.props.playSound();
   };
 
   render() {
@@ -39,9 +39,10 @@ class AddEmployeeButton extends PureComponent {
 }
 
 AddEmployeeButton.propTypes = {
-  globalAlerts: propTypes.func,
-  playSouds: propTypes.func,
-  getEmployees: propTypes.func,
+  apiURL: PropTypes.func,
+  getEmployees: PropTypes.func,
+  globalAlerts: PropTypes.func,
+  playSound: PropTypes.func,
 };
 
 export default AddEmployeeButton;

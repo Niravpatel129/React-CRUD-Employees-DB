@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 import './NightModeSwitch.css';
 
@@ -31,5 +32,10 @@ class NightModeSwitch extends Component {
     );
   }
 }
+
+NightModeSwitch.propTypes = {
+  theme: PropTypes.bool,
+  triggerThemeSwap: PropTypes.func,
+};
 
 export default NightModeSwitch;
