@@ -76,6 +76,14 @@ class AddEmployeeFormModal extends Component {
             <datalist id={key}>
               <option>Brampton</option>
               <option>Toronto</option>
+              <option>Bolton</option>
+            </datalist>
+          )}
+          {key === 'color' && (
+            <datalist id={key}>
+              <option>red</option>
+              <option>blue</option>
+              <option>green</option>
             </datalist>
           )}
         </div>
