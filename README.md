@@ -1,8 +1,7 @@
 # Plexxis Interview Exercise
+Production Build Demo at Heroku at url: https://crud-code-test.herokuapp.com/
 
 ![App Demo](demo/demo.gif)
-
-Hosted on Heroku at url: https://crud-code-test.herokuapp.com/
 
 ## Requirements
 
