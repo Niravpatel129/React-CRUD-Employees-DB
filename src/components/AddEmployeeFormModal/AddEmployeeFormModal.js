@@ -16,6 +16,15 @@ class AddEmployeeFormModal extends Component {
     color: '',
   };
 
+  componentDidMount() {
+    this.getHighestId();
+  }
+
+  getHighestId = async () => {
+    const res = await axios.get(this.props.apiURL('/api/getHighestId'));
+    this.setState({ id: res.data.id + 1 });
+  };
+
   handleInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -50,15 +59,7 @@ class AddEmployeeFormModal extends Component {
   };
 
   renderInputs = () => {
-    const keys = [
-      'id',
-      'name',
-      'code',
-      'profession',
-      'city',
-      'branch',
-      'color',
-    ];
+    const keys = Object.keys(this.state);
 
     return keys.map(key => {
       return (
@@ -72,11 +73,29 @@ class AddEmployeeFormModal extends Component {
             onChange={this.handleInputChange}
             required
           />
+          {key === 'code' && (
+            <datalist id={key}>
+              <option>F{parseInt(this.state.id, 0) + 100}</option>
+            </datalist>
+          )}
+          {key === 'profession' && (
+            <datalist id={key}>
+              <option>Drywall Installer</option>
+              <option>Runner</option>
+            </datalist>
+          )}
           {key === 'city' && (
             <datalist id={key}>
               <option>Brampton</option>
               <option>Toronto</option>
               <option>Bolton</option>
+            </datalist>
+          )}
+          {key === 'branch' && (
+            <datalist id={key}>
+              <option>Pillsworth</option>
+              <option>Atlantis</option>
+              <option>Potterwoods</option>
             </datalist>
           )}
           {key === 'color' && (
