@@ -49,7 +49,7 @@ class UpdateEmployeeModal extends Component {
         this.props.globalAlerts('You cannot use the same id!!', 'error');
         this.closeModal();
       }
-    }, 70);
+    }, 100);
   };
 
   renderInputs = () => {

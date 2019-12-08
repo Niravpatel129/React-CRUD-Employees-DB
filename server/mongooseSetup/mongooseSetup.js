@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 
+mongoose.set("useFindAndModify", false);
+
 module.exports = function mongooseSetup() {
   mongoose.connect(
     "mongodb://admin:dragon1@ds135983.mlab.com:35983/employees" ||

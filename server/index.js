@@ -3,9 +3,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8080;
 
-const mongoose = require("mongoose");
-
-mongoose.set("useFindAndModify", false);
 app.use(express.json());
 
 const mongooseSetup = require("./mongooseSetup/mongooseSetup.js")();
