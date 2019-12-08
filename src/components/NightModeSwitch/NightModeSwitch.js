@@ -8,7 +8,6 @@ const clack = new Audio(
 
 class NightModeSwitch extends Component {
   handleDarkSwitch = () => {
-    clack.volume = 0.3;
     clack.play();
     this.props.triggerThemeSwap();
   };

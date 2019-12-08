@@ -127,7 +127,6 @@ router.get("/getHighestId", cors(corsOptions), (req, res, next) => {
   EmployeesDataBase.findOne()
     .sort({ id: -1 })
     .then(response => {
-      console.log(response);
       res.send(JSON.stringify(response, null, 2));
     })
     .catch(err => console.log(err));

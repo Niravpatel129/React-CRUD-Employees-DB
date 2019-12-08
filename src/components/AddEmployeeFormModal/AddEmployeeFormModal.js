@@ -75,7 +75,7 @@ class AddEmployeeFormModal extends Component {
           />
           {key === 'code' && (
             <datalist id={key}>
-              <option>F{parseInt(this.state.id, 0) + 100}</option>
+              <option>F{parseInt(this.state.id, 0) + 99}</option>
             </datalist>
           )}
           {key === 'profession' && (
