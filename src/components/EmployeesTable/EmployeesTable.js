@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import propTypes from 'prop-types';
 import axios from 'axios';
 import ReactTable from 'react-table';
 
@@ -146,6 +146,7 @@ class EmployeesTable extends PureComponent {
         <div className="Employees">
           <ReactTable
             className="table"
+            defaultPageSize={10}
             data={employees}
             columns={Columns}
             getTdProps={(state, rowInfo, column, instance) => {
@@ -199,9 +200,9 @@ class EmployeesTable extends PureComponent {
   }
 }
 
-EmployeesTable.PropTypes = {
-  apiURL: PropTypes.func,
-  globalAlerts: PropTypes.func,
+EmployeesTable.propTypes = {
+  apiURL: propTypes.func,
+  globalAlerts: propTypes.func,
 };
 
 export default EmployeesTable;

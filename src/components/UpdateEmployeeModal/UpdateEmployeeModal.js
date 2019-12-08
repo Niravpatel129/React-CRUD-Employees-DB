@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Modal from 'react-awesome-modal';
 import axios from 'axios';
 
+import checkDifference from './helpers/checkDifference';
+
 import './UpdateEmployeeModal.css';
 
 class UpdateEmployeeModal extends Component {
@@ -28,6 +30,12 @@ class UpdateEmployeeModal extends Component {
 
   handleSubmit = async event => {
     event.preventDefault();
+
+    if (checkDifference(this.state, this.props.data)) {
+      this.closeModal();
+      return;
+    }
+
     const res = await axios.put(this.props.apiURL('/api/updateEmployee'), {
       _id: this.state._id, // hidden primary key
       id: this.state.id,
