@@ -89,7 +89,7 @@ class EmployeesTable extends PureComponent {
         case 'color':
           returnValue.Cell = props => {
             let { color } = props.original;
-            if (!colorCheckerHelper(color)) {
+            if (!colorCheckerHelper(color.toLowerCase())) {
               color = 'white'; // default color for invalid arguments
             }
             return (
