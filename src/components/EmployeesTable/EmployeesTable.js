@@ -11,7 +11,11 @@ import './EmployeesTable.css';
 import 'react-table/react-table.css';
 
 import { colorCheckerHelper } from './helpers/colorCheckerHelper';
+
 const zippi = new Audio('https://limonte.github.io/mp3/zippi.mp3');
+const poof = new Audio(
+  'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/poof.mp3'
+);
 
 class EmployeesTable extends PureComponent {
   state = {
@@ -115,7 +119,7 @@ class EmployeesTable extends PureComponent {
                     .then(response => {
                       setTimeout(() => {
                         this.props.globalAlerts('Delete Successful');
-
+                        poof.play();
                         this.getEmployees();
                       }, 100);
                     });

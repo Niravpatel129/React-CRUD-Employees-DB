@@ -89,3 +89,7 @@
 #msform .action-button:focus {
   box-shadow: 0 0 0 2px white, 0 0 0 3px #27ae60;
 }
+
+#msform input:hover {
+  border: 0.5px solid black;
+}
