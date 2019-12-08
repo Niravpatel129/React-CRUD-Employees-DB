@@ -14,7 +14,7 @@ Create a simple but **impressive** (looks good, works well, has intuitive design
 
 ## Bonus (Highly Encouraged)
 
-1. Use a relational database to store the data (SQLite, MariaDB, Postgres) [✔]
+1. Use a relational database to store the data (SQLite, MariaDB, Postgres)
 2. UI mechanisms to edit/update employee data [✔]
 3. Add API endpoint to update employee data [✔]
 4. Use [React Table](https://react-table.js.org) [✔]
