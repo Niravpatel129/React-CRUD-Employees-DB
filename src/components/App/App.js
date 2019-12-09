@@ -17,12 +17,6 @@ class App extends React.Component {
     this.triggerThemeSwap();
   }
 
-  static getDerivedStateFromError(error) {
-    // Update state so the next render will show the fallback UI.
-    console.log(error);
-    return { hasError: true };
-  }
-
   triggerThemeSwap = e => {
     const isWhiteMode = this.flipflopValue;
     localStorage.setItem('theme', isWhiteMode);
