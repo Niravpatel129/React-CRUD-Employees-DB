@@ -8,8 +8,9 @@ import './AddEmployeeButton.css';
 class AddEmployeeButton extends PureComponent {
   state = { visible: false };
 
-  shouldModalShow() {
+  openModal() {
     this.setState({ visible: true });
+    this.props.playSound();
   }
 
   closeModal = () => {
@@ -20,7 +21,7 @@ class AddEmployeeButton extends PureComponent {
   render() {
     return (
       <React.Fragment>
-        <button onClick={() => this.shouldModalShow()} className="button">
+        <button onClick={() => this.openModal()} className="button">
           + Employee
         </button>
 
