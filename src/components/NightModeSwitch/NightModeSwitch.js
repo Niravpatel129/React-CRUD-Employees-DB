@@ -18,12 +18,7 @@ class NightModeSwitch extends Component {
       <div className="NightModeSwitch">
         <div className="theme-switch-wrapper">
           <label className="theme-switch" htmlFor="checkbox">
-            <input
-              type="checkbox"
-              onClick={this.handleDarkSwitch}
-              id="checkbox"
-              defaultChecked={this.props.theme}
-            />
+            <input type="checkbox" onClick={this.handleDarkSwitch} id="checkbox" defaultChecked={this.props.theme} />
             <div className="slider round"></div>
           </label>
           <em>Enable Dark Mode!</em>
@@ -35,7 +30,7 @@ class NightModeSwitch extends Component {
 
 NightModeSwitch.propTypes = {
   theme: PropTypes.bool,
-  triggerThemeSwap: PropTypes.func,
+  triggerThemeSwap: PropTypes.func
 };
 
 export default NightModeSwitch;

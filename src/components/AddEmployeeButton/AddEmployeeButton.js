@@ -43,7 +43,7 @@ AddEmployeeButton.propTypes = {
   apiURL: PropTypes.func,
   getEmployees: PropTypes.func,
   globalAlerts: PropTypes.func,
-  playSound: PropTypes.func,
+  playSound: PropTypes.func
 };
 
 export default AddEmployeeButton;

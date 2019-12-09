@@ -13,7 +13,7 @@ class AddEmployeeFormModal extends Component {
     profession: '',
     city: '',
     branch: '',
-    color: '',
+    color: ''
   };
 
   componentDidMount() {
@@ -43,7 +43,7 @@ class AddEmployeeFormModal extends Component {
       city: this.state.city,
       branch: this.state.branch,
       color: this.state.color,
-      assigned: true,
+      assigned: true
     });
 
     setTimeout(() => {
@@ -117,13 +117,7 @@ class AddEmployeeFormModal extends Component {
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>{this.renderInputs()}</fieldset>
-              <input
-                type="submit"
-                name="Submit"
-                className="next action-button"
-                value="Submit"
-                required
-              />{' '}
+              <input type="submit" name="Submit" className="next action-button" value="Submit" required />{' '}
             </form>
           </div>
         </Modal>
@@ -135,7 +129,7 @@ class AddEmployeeFormModal extends Component {
 AddEmployeeFormModal.propTypes = {
   closeModal: propTypes.func,
   getEmployees: propTypes.func,
-  globalAlerts: propTypes.func,
+  globalAlerts: propTypes.func
 };
 
 export default AddEmployeeFormModal;

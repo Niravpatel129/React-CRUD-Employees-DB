@@ -17,7 +17,7 @@ class UpdateEmployeeModal extends Component {
     profession: this.props.data.profession,
     city: this.props.data.city,
     branch: this.props.data.branch,
-    color: this.props.data.color,
+    color: this.props.data.color
   };
 
   closeModal() {
@@ -45,7 +45,7 @@ class UpdateEmployeeModal extends Component {
       city: this.state.city,
       branch: this.state.branch,
       color: this.state.color,
-      assigned: true,
+      assigned: true
     });
 
     setTimeout(() => {
@@ -61,15 +61,7 @@ class UpdateEmployeeModal extends Component {
   };
 
   renderInputs = () => {
-    const keys = [
-      'id',
-      'name',
-      'code',
-      'profession',
-      'city',
-      'branch',
-      'color',
-    ];
+    const keys = ['id', 'name', 'code', 'profession', 'city', 'branch', 'color'];
 
     return keys.map(key => (
       <div className="employeesInput" key={key}>
@@ -92,13 +84,7 @@ class UpdateEmployeeModal extends Component {
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>{this.renderInputs()}</fieldset>
-              <input
-                type="submit"
-                name="next"
-                className="next action-button"
-                value="Update"
-                required
-              />{' '}
+              <input type="submit" name="next" className="next action-button" value="Update" required />{' '}
             </form>
           </div>
         </Modal>
@@ -113,7 +99,7 @@ UpdateEmployeeModal.propTypes = {
   getEmployees: PropTypes.func,
   globalAlerts: PropTypes.func,
   toggleUpdateModal: PropTypes.func,
-  visible: PropTypes.bool,
+  visible: PropTypes.bool
 };
 
 export default UpdateEmployeeModal;

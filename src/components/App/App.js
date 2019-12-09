@@ -33,8 +33,8 @@ class App extends React.Component {
     this.setState({
       component: css({
         color: isWhiteMode ? 'white' : 'dark',
-        darkMode: !isWhiteMode,
-      }),
+        darkMode: !isWhiteMode
+      })
     });
     this.flipflopValue = !this.flipflopValue;
   };
@@ -47,7 +47,7 @@ class App extends React.Component {
           title: 'Sucess!',
           text: message,
           icon: 'success',
-          button: 'Continue!',
+          button: 'Continue!'
         });
   }
 
@@ -55,10 +55,7 @@ class App extends React.Component {
     return (
       <div className={this.state.component}>
         <h1>Plexxis Employees</h1>
-        <NightModeSwitch
-          triggerThemeSwap={this.triggerThemeSwap}
-          theme={this.state.theme}
-        />
+        <NightModeSwitch triggerThemeSwap={this.triggerThemeSwap} theme={this.state.theme} />
         <EmployeesTable globalAlerts={this.globalAlerts} apiURL={apiURL} />
       </div>
     );

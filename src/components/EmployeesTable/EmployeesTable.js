@@ -22,7 +22,7 @@ class EmployeesTable extends PureComponent {
     employees: [],
     dataLoaded: false,
     showUpdateModal: false,
-    valueToUpdate: null,
+    valueToUpdate: null
   };
 
   componentDidMount = () => {
@@ -34,7 +34,7 @@ class EmployeesTable extends PureComponent {
     this.setState({
       employees: res.data,
       show: false,
-      dataLoaded: true,
+      dataLoaded: true
     });
   };
 
@@ -51,34 +51,20 @@ class EmployeesTable extends PureComponent {
   render() {
     const { employees } = this.state;
 
-    const keys = [
-      'id',
-      'name',
-      'code',
-      'profession',
-      'city',
-      'branch',
-      'assigned',
-      'color',
-      'actions',
-    ];
+    const keys = ['id', 'name', 'code', 'profession', 'city', 'branch', 'assigned', 'color', 'actions'];
 
     const Columns = keys.map(key => {
-      const upperCasedFirstLetter =
-        key.charAt(0).toUpperCase() + key.substring(1);
+      const upperCasedFirstLetter = key.charAt(0).toUpperCase() + key.substring(1);
       let returnValue = {
         Header: upperCasedFirstLetter,
-        accessor: key,
+        accessor: key
       };
 
       switch (key) {
         case 'id':
           returnValue.filterable = true;
           returnValue.Filter = ({ onChange }) => (
-            <input
-              onChange={event => onChange(event.target.value)}
-              placeholder="🔍"
-            />
+            <input onChange={event => onChange(event.target.value)} placeholder="🔍" />
           );
           break;
 
@@ -99,7 +85,7 @@ class EmployeesTable extends PureComponent {
                   width: '100%',
                   height: '100%',
                   backgroundColor: color,
-                  borderRadius: '2px',
+                  borderRadius: '2px'
                 }}
               ></div>
             );
@@ -114,7 +100,7 @@ class EmployeesTable extends PureComponent {
                   val.stopPropagation();
                   axios
                     .delete(this.props.apiURL('/api/deleteEmployee'), {
-                      params: { employeeId: props.original._id },
+                      params: { employeeId: props.original._id }
                     })
                     .then(response => {
                       setTimeout(() => {
@@ -157,7 +143,7 @@ class EmployeesTable extends PureComponent {
                   if (rowInfo && rowInfo.original) {
                     this.setState({
                       showUpdateModal: true,
-                      valueToUpdate: rowInfo.original,
+                      valueToUpdate: rowInfo.original
                     });
                   }
                 },
@@ -166,7 +152,7 @@ class EmployeesTable extends PureComponent {
                   axios
                     .put(this.props.apiURL('/api/toggleAssigned'), {
                       _id: rowInfo.original._id,
-                      toEnableOrDisable: !rowInfo.original.assigned,
+                      toEnableOrDisable: !rowInfo.original.assigned
                     })
                     .then(res => {
                       setTimeout(() => {
@@ -174,7 +160,7 @@ class EmployeesTable extends PureComponent {
                         this.getEmployees();
                       }, 70);
                     });
-                },
+                }
               };
             }}
           />
@@ -202,7 +188,7 @@ class EmployeesTable extends PureComponent {
 
 EmployeesTable.propTypes = {
   apiURL: propTypes.func,
-  globalAlerts: propTypes.func,
+  globalAlerts: propTypes.func
 };
 
 export default EmployeesTable;
