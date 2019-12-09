@@ -151,6 +151,7 @@ class EmployeesTable extends PureComponent {
                   }
                 },
                 onContextMenu: e => {
+                  // on right click
                   e.preventDefault();
                   axios
                     .put(this.props.apiURL('/api/toggleAssigned'), {

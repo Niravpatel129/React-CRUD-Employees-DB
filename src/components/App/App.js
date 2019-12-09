@@ -10,8 +10,7 @@ import './App.css';
 import apiURL from './helpers/apiUrlGetter';
 
 class App extends React.Component {
-  theme = JSON.parse(localStorage.getItem('theme'));
-  state = { theme: this.theme, component: '' };
+  state = { theme: JSON.parse(localStorage.getItem('theme')), component: '' };
   flipflopValue = this.state.theme;
 
   componentDidMount() {
