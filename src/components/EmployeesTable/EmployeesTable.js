@@ -16,6 +16,9 @@ const zippi = new Audio('https://limonte.github.io/mp3/zippi.mp3');
 const poof = new Audio(
   'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/poof.mp3'
 );
+const zip = new Audio(
+  'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/zip.mp3'
+);
 
 class EmployeesTable extends PureComponent {
   state = {
@@ -139,7 +142,7 @@ class EmployeesTable extends PureComponent {
               return {
                 onClick: e => {
                   e.stopPropagation();
-
+                  zip.play();
                   if (rowInfo && rowInfo.original) {
                     this.setState({
                       showUpdateModal: true,

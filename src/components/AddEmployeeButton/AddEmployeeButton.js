@@ -5,16 +5,21 @@ import AddEmployeeFormModal from '../AddEmployeeFormModal/AddEmployeeFormModal';
 
 import './AddEmployeeButton.css';
 
+const zip = new Audio(
+  'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/zip.mp3'
+);
+
 class AddEmployeeButton extends PureComponent {
   state = { visible: false };
 
   openModal() {
     this.setState({ visible: true });
-    this.props.playSound();
+    zip.play();
   }
 
   closeModal = () => {
     this.setState({ visible: false });
+
     this.props.playSound();
   };
 
