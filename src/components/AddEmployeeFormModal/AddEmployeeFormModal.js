@@ -7,7 +7,7 @@ import './AddEmployeeFormModal.css';
 
 class AddEmployeeFormModal extends Component {
   state = {
-    id: '',
+    id: 0,
     name: '',
     code: '',
     profession: '',
@@ -83,7 +83,7 @@ class AddEmployeeFormModal extends Component {
           />
           {key === 'code' && (
             <datalist id={key}>
-              <option>F{parseInt(this.state.id, 0) + 99}</option>
+              <option>F{this.state.id + 99}</option>
             </datalist>
           )}
           {key === 'profession' && (
@@ -125,7 +125,7 @@ class AddEmployeeFormModal extends Component {
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>{this.renderInputs()}</fieldset>
-              <input type="submit" name="Submit" className="next action-button" value="Submit" required />{' '}
+              <input type="submit" name="Submit" className="next action-button" value="Submit" required />
             </form>
           </div>
         </Modal>

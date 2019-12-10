@@ -11,7 +11,7 @@ class UpdateEmployeeModal extends Component {
   state = {
     visible: this.props.visible,
     _id: this.props.data._id,
-    id: this.props.data.id,
+    id: parseInt(this.props.data.id, 0),
     name: this.props.data.name,
     code: this.props.data.code,
     profession: this.props.data.profession,
@@ -87,7 +87,7 @@ class UpdateEmployeeModal extends Component {
           <div>
             <form id="msform" onSubmit={this.handleSubmit}>
               <fieldset>{this.renderInputs()}</fieldset>
-              <input type="submit" name="next" className="next action-button" value="Update" required />{' '}
+              <input type="submit" name="next" className="next action-button" value="Update" required />
             </form>
           </div>
         </Modal>
