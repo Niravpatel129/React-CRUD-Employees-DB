@@ -94,7 +94,7 @@ class AddEmployeeFormModal extends Component {
           {key === 'branch' && (
             <datalist id={key}>
               <option>Pillsworth</option>
-              <option>Atlantis</option>
+              <option>Abacus</option>
               <option>Potterwoods</option>
             </datalist>
           )}
