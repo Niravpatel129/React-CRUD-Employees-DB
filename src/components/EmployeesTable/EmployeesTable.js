@@ -69,18 +69,16 @@ class EmployeesTable extends PureComponent {
 
       switch (key) {
         case 'id':
-          returnValue.filterable = true;
-          returnValue.Filter = ({ onChange }) => (
+          returnValue['filterable'] = true;
+          returnValue['Filter'] = ({ onChange }) => (
             <input onChange={event => onChange(event.target.value)} placeholder="🔍" />
           );
           break;
-
         case 'assigned':
-          returnValue.Cell = props => (props.original.assigned ? 'Yes' : 'No');
+          returnValue['Cell'] = props => (props.original.assigned ? 'Yes' : 'No');
           break;
-
         case 'color':
-          returnValue.Cell = props => {
+          returnValue['Cell'] = props => {
             let { color } = props.original;
             if (!colorCheckerHelper(color.toLowerCase())) {
               color = 'white'; // default color for invalid arguments
@@ -98,9 +96,8 @@ class EmployeesTable extends PureComponent {
             );
           };
           break;
-
         case 'actions':
-          returnValue.Cell = props => {
+          returnValue['Cell'] = props => {
             return (
               <button
                 onClick={async val => {
@@ -128,8 +125,8 @@ class EmployeesTable extends PureComponent {
             );
           };
           break;
-
         default:
+          // do nothing here.
           break;
       }
 

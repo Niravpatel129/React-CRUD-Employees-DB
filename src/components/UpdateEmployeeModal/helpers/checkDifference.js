@@ -1,9 +1,9 @@
-export default function checkDifference (array1, array2) {
-  delete array1.visible;
+export default function checkDifference(object1, object2) {
+  delete object1.visible;
 
-  for (const item in array1) {
+  for (const item in object1) {
     // eslint-disable-next-line
-    if (array1[item] != array2[item]) {
+    if (object1[item] != object2[item]) {
       return false;
     }
   }
