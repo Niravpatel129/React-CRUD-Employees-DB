@@ -21,8 +21,12 @@ class AddEmployeeFormModal extends Component {
   }
 
   getHighestId = async () => {
-    const res = await axios.get(this.props.apiURL('/api/getHighestId'));
-    this.setState({ id: res.data.id + 1 });
+    try {
+      const res = await axios.get(this.props.apiURL('/api/getHighestId'));
+      this.setState({ id: res.data.id + 1 });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   handleInputChange = e => {
@@ -35,27 +39,31 @@ class AddEmployeeFormModal extends Component {
 
   handleSubmit = async e => {
     e.preventDefault();
-    const res = await axios.post(this.props.apiURL('/api/addEmployee'), {
-      id: this.state.id,
-      name: this.state.name,
-      code: this.state.code,
-      profession: this.state.profession,
-      city: this.state.city,
-      branch: this.state.branch,
-      color: this.state.color,
-      assigned: true
-    });
+    try {
+      const res = await axios.post(this.props.apiURL('/api/addEmployee'), {
+        id: this.state.id,
+        name: this.state.name,
+        code: this.state.code,
+        profession: this.state.profession,
+        city: this.state.city,
+        branch: this.state.branch,
+        color: this.state.color,
+        assigned: true
+      });
 
-    setTimeout(() => {
-      if (res.status === 200) {
-        this.props.globalAlerts('Added!');
-        this.props.getEmployees();
-        this.closeModal();
-      } else {
-        this.props.globalAlerts('You cannot use the same id!!', 'error');
-        this.closeModal();
-      }
-    }, 100);
+      setTimeout(() => {
+        if (res.status === 200) {
+          this.props.globalAlerts('Added!');
+          this.props.getEmployees();
+          this.closeModal();
+        } else {
+          this.props.globalAlerts('You cannot use the same id!!', 'error');
+          this.closeModal();
+        }
+      }, 100);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   renderInputs = () => {

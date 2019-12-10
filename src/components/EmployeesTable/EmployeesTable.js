@@ -33,12 +33,16 @@ class EmployeesTable extends PureComponent {
   };
 
   getEmployees = async () => {
-    const res = await axios.get(this.props.apiURL('/api/employees'));
-    this.setState({
-      employees: res.data,
-      show: false,
-      dataLoaded: true
-    });
+    try {
+      const res = await axios.get(this.props.apiURL('/api/employees'));
+      this.setState({
+        employees: res.data,
+        show: false,
+        dataLoaded: true
+      });
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   toggleUpdateModal = () => {
@@ -99,19 +103,21 @@ class EmployeesTable extends PureComponent {
           returnValue.Cell = props => {
             return (
               <button
-                onClick={val => {
+                onClick={async val => {
                   val.stopPropagation();
-                  axios
-                    .delete(this.props.apiURL('/api/deleteEmployee'), {
+                  try {
+                    await axios.delete(this.props.apiURL('/api/deleteEmployee'), {
                       params: { employeeId: props.original._id }
-                    })
-                    .then(response => {
-                      setTimeout(() => {
-                        this.props.globalAlerts('Delete Successful');
-                        poof.play();
-                        this.getEmployees();
-                      }, 100);
                     });
+
+                    setTimeout(() => {
+                      this.props.globalAlerts('Delete Successful');
+                      poof.play();
+                      this.getEmployees();
+                    }, 100);
+                  } catch (e) {
+                    console.log(e);
+                  }
                 }}
                 className="actionButtonDelete"
               >

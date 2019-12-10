@@ -35,29 +35,32 @@ class UpdateEmployeeModal extends Component {
       this.closeModal();
       return;
     }
+    try {
+      const res = await axios.put(this.props.apiURL('/api/updateEmployee'), {
+        _id: this.state._id, // hidden primary key
+        id: this.state.id,
+        name: this.state.name,
+        code: this.state.code,
+        profession: this.state.profession,
+        city: this.state.city,
+        branch: this.state.branch,
+        color: this.state.color,
+        assigned: true
+      });
 
-    const res = await axios.put(this.props.apiURL('/api/updateEmployee'), {
-      _id: this.state._id, // hidden primary key
-      id: this.state.id,
-      name: this.state.name,
-      code: this.state.code,
-      profession: this.state.profession,
-      city: this.state.city,
-      branch: this.state.branch,
-      color: this.state.color,
-      assigned: true
-    });
-
-    setTimeout(() => {
-      if (res.status === 200) {
-        this.props.globalAlerts('Updated!');
-        this.props.getEmployees();
-        this.closeModal();
-      } else {
-        this.props.globalAlerts('You cannot use the same id!!', 'error');
-        this.closeModal();
-      }
-    }, 100);
+      setTimeout(() => {
+        if (res.status === 200) {
+          this.props.globalAlerts('Updated!');
+          this.props.getEmployees();
+          this.closeModal();
+        } else {
+          this.props.globalAlerts('You cannot use the same id!!', 'error');
+          this.closeModal();
+        }
+      }, 100);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   renderInputs = () => {
