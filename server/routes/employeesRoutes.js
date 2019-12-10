@@ -14,8 +14,8 @@ const corsOptions = {
 
 let employeess;
 
-function updateEmplyees () {
-  EmployeesDataBase.find(function (err, employees) {
+function updateEmplyees() {
+  EmployeesDataBase.find(function(err, employees) {
     if (err) {
       console.log(err);
     } else {
@@ -61,7 +61,7 @@ router.route('/addEmployee').post((req, res) => {
     assigned: employeeInfo.assigned
   });
 
-  newEmployee.save(function (err, employee) {
+  newEmployee.save(function(err, employee) {
     if (err) {
       res.sendStatus(201);
       res.end();
