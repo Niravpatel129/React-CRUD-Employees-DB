@@ -28,8 +28,8 @@ class UpdateEmployeeModal extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleSubmit = async event => {
-    event.preventDefault();
+  handleSubmit = async e => {
+    e.preventDefault();
 
     if (checkDifference(this.state, this.props.data)) {
       this.closeModal();
