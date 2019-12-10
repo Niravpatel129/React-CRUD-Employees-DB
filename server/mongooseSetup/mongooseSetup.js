@@ -1,11 +1,11 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.set("useFindAndModify", false);
+mongoose.set('useFindAndModify', false);
 
-module.exports = function mongooseSetup() {
+module.exports = function mongooseSetup () {
   mongoose.connect(
-    "mongodb://admin:dragon1@ds135983.mlab.com:35983/employees" ||
+    'mongodb://admin:dragon1@ds135983.mlab.com:35983/employees' ||
       process.env.API_KEY,
     {
       useNewUrlParser: true,
@@ -15,8 +15,8 @@ module.exports = function mongooseSetup() {
 
   const db = mongoose.connection;
 
-  db.on("error", console.error.bind(console, "connection error:"));
-  db.once("open", function() {
-    console.log("connection success to database!");
+  db.on('error', console.error.bind(console, 'connection error:'));
+  db.once('open', function () {
+    console.log('connection success to database!');
   });
 };

@@ -1,21 +1,21 @@
-const router = require("express").Router();
-const cors = require("cors");
+const router = require('express').Router();
+const cors = require('cors');
 
-const employeeSchemaTemplate = require("../Models/employees.model");
+const employeeSchemaTemplate = require('../Models/employees.model');
 
 const EmployeesDataBase = employeeSchemaTemplate;
 
 router.use(cors());
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: 'http://localhost:3000',
   optionsSuccessStatus: 200
 };
 
 let employeess;
 
-function updateEmplyees() {
-  EmployeesDataBase.find(function(err, employees) {
+function updateEmplyees () {
+  EmployeesDataBase.find(function (err, employees) {
     if (err) {
       console.log(err);
     } else {
@@ -26,15 +26,15 @@ function updateEmplyees() {
 
 updateEmplyees();
 
-router.get("/employees", cors(corsOptions), (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.get('/employees', cors(corsOptions), (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
   res.status(200);
   res.send(JSON.stringify(employeess, null, 2));
 });
 
-router.delete("/deleteEmployee", cors(corsOptions), (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.delete('/deleteEmployee', cors(corsOptions), (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
   const employeeID = req.query.employeeId;
 
@@ -46,8 +46,8 @@ router.delete("/deleteEmployee", cors(corsOptions), (req, res, next) => {
   });
 });
 
-router.route("/addEmployee").post((req, res) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.route('/addEmployee').post((req, res) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
   const employeeInfo = req.body;
   const newEmployee = new EmployeesDataBase({
@@ -61,20 +61,20 @@ router.route("/addEmployee").post((req, res) => {
     assigned: employeeInfo.assigned
   });
 
-  newEmployee.save(function(err, employee) {
+  newEmployee.save(function (err, employee) {
     if (err) {
       res.sendStatus(201);
       res.end();
     } else {
       updateEmplyees();
       res.sendStatus(200);
-      console.log(employee.name + " added to the database!");
+      console.log(employee.name + ' added to the database!');
     }
   });
 });
 
-router.route("/updateEmployee").put((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.route('/updateEmployee').put((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
   const employeeInfo = req.body;
 
   EmployeesDataBase.findByIdAndUpdate(
@@ -101,8 +101,8 @@ router.route("/updateEmployee").put((req, res, next) => {
     });
 });
 
-router.route("/toggleAssigned").put(cors(corsOptions), (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.route('/toggleAssigned').put(cors(corsOptions), (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
   const employeeInfo = req.body;
 
@@ -121,8 +121,8 @@ router.route("/toggleAssigned").put(cors(corsOptions), (req, res, next) => {
     });
 });
 
-router.get("/getHighestId", cors(corsOptions), (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
+router.get('/getHighestId', cors(corsOptions), (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
   EmployeesDataBase.findOne()
     .sort({ id: -1 })

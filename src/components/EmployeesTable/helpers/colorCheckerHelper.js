@@ -1,4 +1,4 @@
-export function colorCheckerHelper(strColor) {
+export function colorCheckerHelper (strColor) {
   var s = new Option().style;
   s.color = strColor;
   var test1 = s.color === strColor;

@@ -1,15 +1,15 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 
 const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 
-const mongooseSetup = require("./mongooseSetup/mongooseSetup.js")();
-const employeesRoutes = require("./routes/employeesRoutes");
+const mongooseSetup = require('./mongooseSetup/mongooseSetup.js')();
+const employeesRoutes = require('./routes/employeesRoutes');
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/api", employeesRoutes);
+app.use('/api', employeesRoutes);
 
-app.listen(PORT, () => console.log("Job Dispatch API running on port 8080!"));
+app.listen(PORT, () => console.log('Job Dispatch API running on port 8080!'));
