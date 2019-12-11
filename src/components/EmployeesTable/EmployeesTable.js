@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import propTypes from 'prop-types';
 import axios from 'axios';
 import ReactTable from 'react-table';
@@ -20,7 +20,7 @@ const zip = new Audio(
   'https://raw.githubusercontent.com/Niravpatel129/World-Shooter-game-browser-multiplayer-online-/master/public/assets/zip.mp3'
 );
 
-class EmployeesTable extends PureComponent {
+class EmployeesTable extends React.Component {
   state = {
     employees: [],
     dataLoaded: false,
