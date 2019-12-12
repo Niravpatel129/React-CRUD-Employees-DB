@@ -29,3 +29,4 @@ Create a simple but **impressive** (looks good, works well, has intuitive design
 - Right clicking on any of the rows should toggle the assigned.
 - Dark theme option available, also stores which theme you use in the browser localstorage
 - When you add new employee, the ID Field is auto generated based on ascending order, and Code field option is dynamic based on id
+- CSS changes for consistency on different resolutions
