@@ -3,6 +3,9 @@ import propTypes from 'prop-types';
 import axios from 'axios';
 import ReactTable from 'react-table';
 
+import { connect } from 'react-redux';
+import { setLoadingSpinner } from '../../actions';
+
 import AddEmployeeButton from '../AddEmployeeButton/AddEmployeeButton';
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 import UpdateEmployeeModal from '../UpdateEmployeeModal/UpdateEmployeeModal';
@@ -23,7 +26,6 @@ const zip = new Audio(
 class EmployeesTable extends React.Component {
   state = {
     employees: [],
-    dataLoaded: false,
     showUpdateModal: false,
     valueToUpdate: null
   };
@@ -35,10 +37,11 @@ class EmployeesTable extends React.Component {
   getEmployees = async () => {
     try {
       const res = await axios.get(this.props.apiURL('/api/employees'));
+      this.props.setLoadingSpinner(true);
+
       this.setState({
         employees: res.data,
-        show: false,
-        dataLoaded: true
+        show: false
       });
     } catch (e) {
       console.log(e);
@@ -133,7 +136,7 @@ class EmployeesTable extends React.Component {
       return returnValue;
     });
 
-    if (this.state.dataLoaded) {
+    if (this.props.currentSpinnerMode) {
       return (
         <div className="Employees">
           <ReactTable
@@ -198,4 +201,8 @@ EmployeesTable.propTypes = {
   globalAlerts: propTypes.func
 };
 
-export default EmployeesTable;
+const mapStateToProps = state => {
+  return { currentSpinnerMode: state.currentSpinnerMode };
+};
+
+export default connect(mapStateToProps, { setLoadingSpinner })(EmployeesTable);

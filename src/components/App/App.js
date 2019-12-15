@@ -2,6 +2,9 @@ import React from 'react';
 import swal from 'sweetalert';
 import { css } from 'emotion';
 
+import { connect } from 'react-redux';
+import { setLoadingSpinner } from '../../actions';
+
 import EmployeesTable from '../EmployeesTable/EmployeesTable';
 import NightModeSwitch from '../NightModeSwitch/NightModeSwitch';
 
@@ -55,4 +58,10 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    currentSpinnerMode: state.currentSpinnerMode
+  };
+};
+
+export default connect(mapStateToProps, { setLoadingSpinner })(App);
