@@ -4,7 +4,7 @@
   "license": "None provided",
   "private": true,
   "dependencies": {
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "concurrently": "^3.6.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
