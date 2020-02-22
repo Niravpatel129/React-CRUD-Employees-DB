@@ -10,7 +10,7 @@
     "dotenv": "^8.2.0",
     "emotion": "^10.0.23",
     "express": "^4.16.3",
-    "mongodb": "^3.3.5",
+    "mongodb": "^3.5.3",
     "mongoose": "^5.7.12",
     "node-sass": "^4.13.1",
     "react": "^16.4.1",
