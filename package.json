@@ -20,7 +20,7 @@
     "react-scripts": "3.4.1",
     "react-table": "^6.11.5",
     "redux": "^4.0.4",
-    "serve": "^11.3.0",
+    "serve": "^11.3.2",
     "sweetalert": "^2.1.2",
     "sweetalert-react": "^0.4.11"
   },
